@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FollowPlayer : MonoBehaviour {
+public class EnnemyFollowPlayer : MonoBehaviour {
     // Start is called before the first frame update
     [SerializeField] private GameObject player;
 

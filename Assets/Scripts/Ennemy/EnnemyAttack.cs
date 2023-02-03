@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack :MonoBehaviour {
+public class EnnemyAttack :MonoBehaviour {
 
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private float attackRange = 2f;
@@ -23,12 +23,12 @@ public class Attack :MonoBehaviour {
         if(isAvailable) {
             if(Vector3.Distance(GetComponent<Transform>().position, target.transform.position) < attackRange) {
                 Debug.Log("attacked");
-                StartCoroutine(StartCooldown());
+                StartCoroutine(AttackCooldown());
             }
         }
     }
 
-    public IEnumerator StartCooldown() {
+    public IEnumerator AttackCooldown() {
         isAvailable = false;
         yield return new WaitForSeconds(attackCooldown);
         isAvailable = true;

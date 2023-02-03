@@ -35,6 +35,7 @@ public class BulletScript : MonoBehaviour
         if (other.CompareTag("Ennemy"))
         {
             // On récupère la vie de mon ennemi et on lui enlève le nombre de dégats de la balle
+            //other.GetComponent<>
         }
     }
     #endregion

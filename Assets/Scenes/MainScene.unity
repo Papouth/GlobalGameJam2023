@@ -173,10 +173,8 @@ MonoBehaviour:
   ammoCount: 20
   ammoInMag: 20
   magazineCount: 3
-  bulletSpeed: 4
   bulletPrefab: {fileID: 7723725221263433118, guid: ccbf17e83d904fb4d83e9f8560465de1, type: 3}
   bulletSpawn: {fileID: 0}
-  damage: 20
   fireRate: 0.3
   recoilGun: {x: 0, y: 0.1, z: 0}
   recoilPlayer: {x: 0, y: 0, z: 0.3}
@@ -757,6 +755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9171967073f954e9953ff33608a048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canShoot: 0
 --- !u!114 &1933453993
 MonoBehaviour:
   m_ObjectHideFlags: 0

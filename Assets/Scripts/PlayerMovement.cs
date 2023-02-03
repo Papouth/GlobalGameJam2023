@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Locomotion();
-        Interact();
     }
     #endregion
 
@@ -55,16 +54,6 @@ public class PlayerMovement : MonoBehaviour
 
         movement = directionInput.normalized * (moveSpeed * Time.deltaTime);
         cc.Move(movement);
-    }
-    #endregion
-
-
-    #region Movement
-    private void Interact() {
-        if(playerInput.CanInteract) {
-            Debug.Log("Interact pressed");
-            playerInput.CanInteract = false;
-        }
     }
     #endregion
 }

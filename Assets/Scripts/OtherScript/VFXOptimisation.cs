@@ -8,6 +8,6 @@ public class VFXOptimisation : MonoBehaviour
 
     private void Start()
     {
-        Destroy(this, destroyTimer);
+        Destroy(gameObject, destroyTimer);
     }
 }

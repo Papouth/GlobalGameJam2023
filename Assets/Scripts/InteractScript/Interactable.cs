@@ -7,8 +7,10 @@ public interface IInteractable
     public void Interact();
 }
 
-public abstract class Interactable : MonoBehaviour, IInteractable{
+public abstract class Interactable : MonoBehaviour, IInteractable
+{
     public virtual void Interact() {
+
         
     }
 }

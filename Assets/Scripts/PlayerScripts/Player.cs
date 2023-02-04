@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int actualNumber;
 
     [Header("Player Component")]
-    private Animator playerAnimator;
+    public Animator playerAnimator;
     private Weapon weapon;
     private PlayerInput playerInput;
     #endregion

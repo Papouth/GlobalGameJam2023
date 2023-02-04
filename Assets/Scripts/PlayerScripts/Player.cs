@@ -51,8 +51,10 @@ public class Player : MonoBehaviour
         {
             weapon = inventory[i].GetComponentInChildren<Weapon>();
 
-            if (weapon != null) weapon.gameObject.SetActive(false);
-            else if (weapon == null) inventory[i].gameObject.SetActive(false);
+            //if (weapon != null) weapon.gameObject.SetActive(true); // false
+            //else if (weapon == null) inventory[i].gameObject.SetActive(false);
+
+            inventory[i].gameObject.SetActive(false);
         }
 
         weaponInHand = inventory[0];
@@ -78,13 +80,31 @@ public class Player : MonoBehaviour
 
         if (mouseWheelInput.y > 0.1f)
         {
-            if (actualNumber == inventory.Length) actualNumber = -1;
-            weaponInHand = inventory[actualNumber++];
+            // On cache l'arme d'avant
+            weaponInHand.SetActive(false);
+
+            actualNumber = actualNumber + 1;
+
+            if (actualNumber > inventory.Length - 1) actualNumber = 0;
+
+            weaponInHand = inventory[actualNumber];
+
+            // On cache l'arme d'avant
+            weaponInHand.SetActive(true);
         }
         else if (mouseWheelInput.y < -0.1f)
         {
-            if (actualNumber == 0) actualNumber = 4;
-            weaponInHand = inventory[actualNumber--];
+            // On cache l'arme d'avant
+            weaponInHand.SetActive(false);
+
+            actualNumber = actualNumber - 1;
+
+            if (actualNumber < 0) actualNumber = 2;
+
+            weaponInHand = inventory[actualNumber];
+
+            // On cache l'arme d'avant
+            weaponInHand.SetActive(true);
         }
     }
     #endregion

@@ -15,7 +15,7 @@ public class EnnemyFollowPlayer : MonoBehaviour {
 
     void Update() 
     {
-        transform.LookAt(player.transform.position);
+        //transform.LookAt(new Vector3(player.transform.position.x, 0, player.transform.position.z));
         agent.destination = player.transform.position;
     } 
 }

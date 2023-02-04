@@ -17,6 +17,7 @@ public class EnnemyAttack : MonoBehaviour
             if (attackTime > attackCooldown)
             {
                 other.GetComponent<Player>().playerLife -= ennemyDamage;
+                Debug.Log("slt à tous ça attaque");
                 attackTime = 0;
             }
         }

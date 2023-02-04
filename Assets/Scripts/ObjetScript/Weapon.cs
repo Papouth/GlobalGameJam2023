@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Weapon : MonoBehaviour
 {
@@ -19,12 +20,11 @@ public class Weapon : MonoBehaviour
 
     [Header("Weapon Recoil")]
     [SerializeField] private float recoilGunAmount;
-    private Vector3 recoilGun;
     private float timeRecoil = 0f;
     private float recoilLimitTimer;
     private bool recoilWeapon;
 
-
+    //private Transform playerTransform;
     [SerializeField] private Vector3 recoilPlayer;
     [SerializeField] private AudioSource shotSound;
     [SerializeField] private GameObject bulletCasing;
@@ -32,12 +32,15 @@ public class Weapon : MonoBehaviour
 
     [Header("Component")]
     [SerializeField] private PlayerInput playerInput;
+    private CharacterController cc;
     #endregion
 
     #region Built In Methods
     private void Start()
     {
+        cc = GetComponentInParent<CharacterController>();
         playerInput = GetComponentInParent<PlayerInput>();
+        //playerTransform = GetComponentInParent<Transform>();
 
         recoilLimitTimer = fireRate / 5f;
     }
@@ -62,6 +65,7 @@ public class Weapon : MonoBehaviour
                 Instantiate(bulletPrefab, transform.position, transform.rotation);
 
                 WeaponRecoil();
+                PlayerRecoil();
 
                 ammoCount--;
 
@@ -75,6 +79,7 @@ public class Weapon : MonoBehaviour
                 Instantiate(bulletPrefab, transform.position, transform.rotation);
 
                 WeaponRecoil();
+                PlayerRecoil();
 
                 ammoCount--;
 
@@ -103,29 +108,36 @@ public class Weapon : MonoBehaviour
 
     private void WeaponRecoil()
     {
-        recoilGun += new Vector3(Random.Range(2f, 15f), 0f, 0f);
-
-        transform.rotation = Quaternion.Euler(-recoilGun);
+        transform.localRotation = Quaternion.Euler(Random.Range(2f, 15f), 0f, 0f);
 
         recoilWeapon = true;
     }
 
     private void WeaponRecoilTimer()
     {
-       if (recoilWeapon)
+        if (recoilWeapon)
         {
             timeRecoil += Time.deltaTime;
 
             if (timeRecoil > recoilLimitTimer)
             {
-                recoilGun = Vector3.zero;
-                transform.rotation = Quaternion.identity;
+                transform.localRotation = Quaternion.identity;
 
                 recoilWeapon = false;
 
                 timeRecoil = 0f;
             }
         }
+    }
+
+    private void PlayerRecoil()
+    {
+        // pas dans le bon sens, soit prendre le Vector3.forward ou sinon prend l'inverse de la direction de l'arme
+
+        //recoilPlayer = new Vector3(0f, 0f, Random.Range(1f, 10f));
+
+        cc.Move(recoilPlayer);
+        //playerTransform.position += recoilPlayer;
     }
     #endregion
 }

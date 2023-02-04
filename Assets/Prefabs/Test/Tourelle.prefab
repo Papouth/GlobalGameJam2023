@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7957140437279637582}
+  - component: {fileID: 4805177462357223383}
   m_Layer: 0
   m_Name: teleportPoint
   m_TagString: Untagged
@@ -62,6 +63,19 @@ Transform:
   m_Father: {fileID: 243669375083858515}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &4805177462357223383
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4847174534479024303}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5736611159066223441
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +89,7 @@ GameObject:
   - component: {fileID: 2473148775710713086}
   - component: {fileID: 7989395323902796567}
   - component: {fileID: 1916899589419691964}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tourelle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

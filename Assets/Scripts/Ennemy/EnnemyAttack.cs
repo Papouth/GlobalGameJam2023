@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnnemyAttack : MonoBehaviour
 {
-
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private int ennemyDamage = 10;
 

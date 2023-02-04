@@ -25,7 +25,8 @@ public class Weapon : MonoBehaviour
     private bool recoilWeapon;
 
     //private Transform playerTransform;
-    [SerializeField] private Vector3 recoilPlayer;
+    [SerializeField] private float valueRecoilPlayer;
+    private Vector3 recoilPlayer;
     [SerializeField] private AudioSource shotSound;
     [SerializeField] private GameObject bulletCasing;
     [SerializeField] private Transform bulletCasingPos;
@@ -132,12 +133,9 @@ public class Weapon : MonoBehaviour
 
     private void PlayerRecoil()
     {
-        // pas dans le bon sens, soit prendre le Vector3.forward ou sinon prend l'inverse de la direction de l'arme
+        recoilPlayer = cc.transform.TransformDirection(0f, 0f, -transform.localPosition.z - valueRecoilPlayer);
 
-        //recoilPlayer = new Vector3(0f, 0f, Random.Range(1f, 10f));
-
-        //cc.Move(recoilPlayer);
-        //playerTransform.position += recoilPlayer;
+        cc.Move(recoilPlayer);
     }
     #endregion
 }

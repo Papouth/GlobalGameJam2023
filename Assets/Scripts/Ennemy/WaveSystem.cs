@@ -17,6 +17,7 @@ public class WaveSystem : MonoBehaviour
     [SerializeField] private GameObject enemy;
     #endregion
 
+    #region variables
     private bool isCooldown;
     public bool inWave;
     private int nextWaveMobs;
@@ -24,7 +25,9 @@ public class WaveSystem : MonoBehaviour
     private int needSpawn;
 
     private float time = 0;
+    #endregion
 
+    #region Unity built-ins
     // Start is called before the first frame update
     void Start() 
     {
@@ -51,17 +54,16 @@ public class WaveSystem : MonoBehaviour
             time = 0f;
         }
     }
+    #endregion
 
-    private Vector3 pickRandomSpawner() {
-        return spawners[Random.Range(0, spawners.Length)].transform.position;
-    }
+    #region START/END WAVE
 
     private void startWave() {
 
         currentWave++;
         int needSpawn = nextWaveMobs;
 
-        Debug.Log("Spawning wave #"+currentWave+" with "+needSpawn+" mobs");
+        Debug.Log("Spawning wave #" + currentWave + " with " + needSpawn + " mobs");
 
         Debug.Log("Début de la vague");
 
@@ -69,6 +71,7 @@ public class WaveSystem : MonoBehaviour
 
         inWave = true;
     }
+
     private void endWave() {
         inWave = false;
 
@@ -77,6 +80,13 @@ public class WaveSystem : MonoBehaviour
         Debug.Log("Fin de la vague");
 
         StartCoroutine(StartCooldown());
+    }
+    #endregion
+
+    #region Fonctions
+
+    private Vector3 pickRandomSpawner() {
+        return spawners[Random.Range(0, spawners.Length)].transform.position;
     }
 
 
@@ -91,23 +101,12 @@ public class WaveSystem : MonoBehaviour
 
         return true;
     }
-    /*
-    private IEnumerator spawnWave() {
-        Debug.Log("Bon ça spawn là");
-        for(int i = 0; i < needSpawn; i++) {
-
-            Instantiate(enemy, pickRandomSpawner(), Quaternion.identity);
-
-            //SPAWN ENNEMY
-
-            yield return new WaitForSeconds(spawnDelay);
-        }
-    }
-    */
 
     private IEnumerator StartCooldown() {
         isCooldown = true;
         yield return new WaitForSeconds(timeBetweenWaves);
         isCooldown = false;
     }
+
+    #endregion
 }

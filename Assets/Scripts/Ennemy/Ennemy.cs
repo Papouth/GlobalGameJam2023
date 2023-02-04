@@ -7,12 +7,10 @@ public class Ennemy : MonoBehaviour
 {
     [SerializeField] private int Health = 20;
 
-    public GameObject target;
-
     // Start is called before the first frame update
     void Start()
     {
-        target = FindObjectOfType<PlayerMovement>().gameObject;
+
     }
 
     // Update is called once per frame
@@ -25,9 +23,10 @@ public class Ennemy : MonoBehaviour
         return Health;
     }
 
-    private void decreaseHealth(int health) {
+    public void decreaseHealth(int health) {
         if(Health - health < 0) {
             Debug.Log("Mort");
+            Destroy(this);
         } else Health = health;
     }
 }

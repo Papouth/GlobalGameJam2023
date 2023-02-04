@@ -414,6 +414,7 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0.1
   moveSpeed: 5
+  targetPos: {x: 0, y: 0, z: 0}
   cam: {fileID: 0}
 --- !u!114 &3856581967115565803
 MonoBehaviour:
@@ -1116,6 +1117,7 @@ MonoBehaviour:
   fireRate: 0.05
   recoilGunAmount: 0.5
   valueRecoilPlayer: 0.2
+  reloadTime: 2
   shotSound: {fileID: 0}
   bulletCasing: {fileID: 0}
   bulletCasingPos: {fileID: 0}
@@ -1239,6 +1241,7 @@ MonoBehaviour:
   fireRate: 0.16
   recoilGunAmount: 1
   valueRecoilPlayer: 0.3
+  reloadTime: 2.5
   shotSound: {fileID: 0}
   bulletCasing: {fileID: 0}
   bulletCasingPos: {fileID: 0}
@@ -1651,6 +1654,7 @@ MonoBehaviour:
   fireRate: 1
   recoilGunAmount: 30
   valueRecoilPlayer: 3.5
+  reloadTime: 3
   shotSound: {fileID: 0}
   bulletCasing: {fileID: 0}
   bulletCasingPos: {fileID: 0}

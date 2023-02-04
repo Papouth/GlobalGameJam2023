@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     #region Variables
-    [SerializeField] private int damage;
+    [SerializeField] private int bulletDamage;
     [SerializeField] private float bulletSpeed;
     private Rigidbody rb;
     #endregion
@@ -35,7 +35,7 @@ public class BulletScript : MonoBehaviour
         if (other.CompareTag("Ennemy"))
         {
             // On récupère la vie de mon ennemi et on lui enlève le nombre de dégats de la balle
-            //other.GetComponent<>
+            other.GetComponent<Ennemy>().ennemyHealth -= bulletDamage;
         }
     }
     #endregion

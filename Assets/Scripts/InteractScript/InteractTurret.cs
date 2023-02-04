@@ -8,7 +8,6 @@ public class InteractTurret : Interactable
     
     [SerializeField] public Transform teleportPoint;
     [SerializeField] public Transform turretPoint;
-    [SerializeField] public Transform LookPoint;
 
     public bool busy = false; //busy veut dire qu'un PNJ s'y déplace
 

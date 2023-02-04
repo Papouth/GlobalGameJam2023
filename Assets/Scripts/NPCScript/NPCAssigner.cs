@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//à mettre dans un empty random dans la scène
 public class NPCAssigner : MonoBehaviour
 {
     public NPC grabbedNPC;

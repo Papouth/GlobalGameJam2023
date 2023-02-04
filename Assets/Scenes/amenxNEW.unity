@@ -230,6 +230,7 @@ MonoBehaviour:
   ammoCount: 20
   ammoInMag: 20
   magazineCount: 3
+  magazineCountBase: 0
   bulletPrefab: {fileID: 7723725221263433118, guid: ccbf17e83d904fb4d83e9f8560465de1, type: 3}
   bulletSpawn: {fileID: 0}
   fireRate: 0.3
@@ -1058,6 +1059,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   targetPos: {x: 0, y: 0, z: 0}
+  inAmmoBox: 0
   cam: {fileID: 963194227}
 --- !u!143 &1933453991
 CharacterController:
@@ -1432,6 +1434,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 584776021344688508, guid: 991f896c115493c4ea65ea5244a072cf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3684610004418940718, guid: 991f896c115493c4ea65ea5244a072cf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874518086581665834, guid: 991f896c115493c4ea65ea5244a072cf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5757630076754372299, guid: 991f896c115493c4ea65ea5244a072cf, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1439,6 +1453,18 @@ PrefabInstance:
     - target: {fileID: 7560575998416919737, guid: 991f896c115493c4ea65ea5244a072cf, type: 3}
       propertyPath: m_Name
       value: Defense
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696886343963242470, guid: 991f896c115493c4ea65ea5244a072cf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.823128
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784521398101948108, guid: 991f896c115493c4ea65ea5244a072cf, type: 3}
+      propertyPath: m_Carve
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784521398101948108, guid: 991f896c115493c4ea65ea5244a072cf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8517942874229733603, guid: 991f896c115493c4ea65ea5244a072cf, type: 3}
       propertyPath: m_RootOrder

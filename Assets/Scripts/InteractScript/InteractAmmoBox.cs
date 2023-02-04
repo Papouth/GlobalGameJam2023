@@ -14,28 +14,39 @@ public class InteractAmmoBox : Interactable
     {
         player = FindObjectOfType<Player>();
         playerMovement = player.GetComponent<PlayerMovement>();
-        weapon = player.GetComponentInChildren<Weapon>();
     }
 
     private void Update()
     {
         AddAmmo();
+
+        Debug.Log(playerMovement.inAmmoBox);
     }
 
     private void AddAmmo()
     {
         if (playerMovement.inAmmoBox)
         {
+            // Set trigger anim interact
+            player.playerAnimator.SetTrigger("Interact");
+
             ammoTime += Time.deltaTime;
 
             if (ammoTime > ammoBoxTimer)
             {
                 for (int i = 0; i < player.inventory.Length; i++)
                 {
+                    weapon = player.GetComponentInChildren<Weapon>();
+
                     weapon.magazineCount = weapon.magazineCountBase;
                 }
 
+                // Reset trigger anim interact
+                player.playerAnimator.ResetTrigger("Interact");
+
                 playerMovement.inAmmoBox = false;
+
+                ammoTime = 0;
             }
         }
     }

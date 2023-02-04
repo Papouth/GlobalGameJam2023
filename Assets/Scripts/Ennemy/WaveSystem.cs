@@ -1,10 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.ExceptionServices;
-using Unity.Collections.LowLevel.Unsafe;
-using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
@@ -17,22 +11,23 @@ public class WaveSystem : MonoBehaviour
     [SerializeField] private int eachWave = 5; //pas de nom pour la variable désolééé
 
     [SerializeField] private int timeBetweenWaves = 5;
-    [SerializeField] private int spawnDelay = 2;
+    [SerializeField] private int spawnDelay = 10;
 
     [SerializeField] private GameObject[] spawners;
     [SerializeField] private GameObject enemy;
     #endregion
 
-    private bool isCooldown = false;
-
+    #region variables
+    private bool isCooldown;
+    public bool inWave;
     private int nextWaveMobs;
-
     private int currentWave = 0;
-
     private int needSpawn;
 
-    public bool inWave = false;
+    private float time = 0;
+    #endregion
 
+    #region Unity built-ins
     // Start is called before the first frame update
     void Start() 
     {
@@ -49,27 +44,34 @@ public class WaveSystem : MonoBehaviour
         if(inWave && seeIfTheyAreAllDead()) {
             endWave();
         }
-    }
 
-    private Vector3 pickRandomSpawner() {
-        System.Random random = new System.Random();
+        time += Time.deltaTime;
 
-        return spawners[random.Next(spawners.Length)].transform.position;
+        if(time > spawnDelay && needSpawn > 0) {
+            Instantiate(enemy, pickRandomSpawner(), Quaternion.identity);
+            needSpawn--;
+
+            time = 0f;
+        }
     }
+    #endregion
+
+    #region START/END WAVE
 
     private void startWave() {
 
         currentWave++;
         int needSpawn = nextWaveMobs;
 
-        Debug.Log("Spawning wave #"+currentWave+" with "+needSpawn+" mobs");
+        Debug.Log("Spawning wave #" + currentWave + " with " + needSpawn + " mobs");
 
         Debug.Log("Début de la vague");
 
-        StartCoroutine(spawnWave());
+        //StartCoroutine(spawnWave());
 
         inWave = true;
     }
+
     private void endWave() {
         inWave = false;
 
@@ -79,10 +81,17 @@ public class WaveSystem : MonoBehaviour
 
         StartCoroutine(StartCooldown());
     }
+    #endregion
+
+    #region Fonctions
+
+    private Vector3 pickRandomSpawner() {
+        return spawners[Random.Range(0, spawners.Length)].transform.position;
+    }
 
 
     private bool seeIfTheyAreAllDead() {
-        UnityEngine.SceneManagement.Scene scene = SceneManager.GetActiveScene();
+        Scene scene = SceneManager.GetActiveScene();
 
         foreach(GameObject obj in scene.GetRootGameObjects()) {
             if(obj.GetComponent<Ennemy>() != null) {
@@ -93,19 +102,11 @@ public class WaveSystem : MonoBehaviour
         return true;
     }
 
-    private IEnumerator spawnWave() {
-        for(int i = 0; i < needSpawn; i++) {
-            Instantiate(enemy, pickRandomSpawner(), Quaternion.identity);
-
-            //SPAWN ENNEMY
-
-            yield return new WaitForSeconds(3);
-        }
-    }
-
     private IEnumerator StartCooldown() {
         isCooldown = true;
         yield return new WaitForSeconds(timeBetweenWaves);
         isCooldown = false;
     }
+
+    #endregion
 }

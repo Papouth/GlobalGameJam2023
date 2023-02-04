@@ -71,6 +71,15 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""7307a33f-b2d3-4939-97cd-88be0c548187"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""action"": ""Wheel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da2b116f-606e-4339-816f-e7743c3fd276"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +205,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         m_PlayerMap_Shoot = m_PlayerMap.FindAction("Shoot", throwIfNotFound: true);
         m_PlayerMap_StopShoot = m_PlayerMap.FindAction("StopShoot", throwIfNotFound: true);
         m_PlayerMap_Wheel = m_PlayerMap.FindAction("Wheel", throwIfNotFound: true);
+        m_PlayerMap_MousePosition = m_PlayerMap.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +270,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_Shoot;
     private readonly InputAction m_PlayerMap_StopShoot;
     private readonly InputAction m_PlayerMap_Wheel;
+    private readonly InputAction m_PlayerMap_MousePosition;
     public struct PlayerMapActions
     {
         private @PlayerMovementInput m_Wrapper;
@@ -258,6 +280,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_PlayerMap_Shoot;
         public InputAction @StopShoot => m_Wrapper.m_PlayerMap_StopShoot;
         public InputAction @Wheel => m_Wrapper.m_PlayerMap_Wheel;
+        public InputAction @MousePosition => m_Wrapper.m_PlayerMap_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +305,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @Wheel.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnWheel;
                 @Wheel.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnWheel;
                 @Wheel.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnWheel;
+                @MousePosition.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMousePosition;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -301,6 +327,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @Wheel.started += instance.OnWheel;
                 @Wheel.performed += instance.OnWheel;
                 @Wheel.canceled += instance.OnWheel;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
             }
         }
     }
@@ -312,5 +341,6 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnStopShoot(InputAction.CallbackContext context);
         void OnWheel(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }

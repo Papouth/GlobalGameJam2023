@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour
     #region Variables
     private Vector2 moveInput;
     private Vector2 wheelInput;
+    private Vector2 mousePosInput;
     private bool canInteract;
     private bool canShoot;
 
@@ -16,6 +17,8 @@ public class PlayerInput : MonoBehaviour
     public Vector2 MoveInput => moveInput;
 
     public Vector2 WheelInput => wheelInput;
+
+    public Vector2 MousePosInput => mousePosInput;
 
     public bool CanInteract
     {
@@ -40,6 +43,11 @@ public class PlayerInput : MonoBehaviour
     public void OnWheel(InputValue value)
     {
         wheelInput = value.Get<Vector2>();
+    }
+
+    public void OnMousePosition(InputValue value)
+    {
+        mousePosInput = value.Get<Vector2>();
     }
 
     public void OnInteract()

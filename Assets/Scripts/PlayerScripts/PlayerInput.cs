@@ -5,6 +5,7 @@ public class PlayerInput : MonoBehaviour
 {
     #region Variables
     private Vector2 moveInput;
+    private Vector2 wheelInput;
     private bool canInteract;
     private bool canShoot;
 
@@ -13,6 +14,8 @@ public class PlayerInput : MonoBehaviour
 
     #region Bool Functions
     public Vector2 MoveInput => moveInput;
+
+    public Vector2 WheelInput => wheelInput;
 
     public bool CanInteract
     {
@@ -31,8 +34,12 @@ public class PlayerInput : MonoBehaviour
     #region Functions
     public void OnMovement(InputValue value)
     {
-        // On récupère la valeur du mouvement qu'on stock dans un Vector2
         moveInput = value.Get<Vector2>();
+    }
+
+    public void OnWheel(InputValue value)
+    {
+        wheelInput = value.Get<Vector2>();
     }
 
     public void OnInteract()

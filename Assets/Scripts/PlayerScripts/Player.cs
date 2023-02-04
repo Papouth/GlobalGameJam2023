@@ -4,27 +4,60 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    #region Variables
+    [Header("Player Parameters")]
     public int playerLife = 100;
+
+    [Header("Player Inventory")]
+    private Vector3 mouseWheelInput;
+    //private bool weaponEquiped;
+    [SerializeField] private GameObject[] inventory = new GameObject[3];
+    [SerializeField] private GameObject weaponInHand;
+    [SerializeField] private int actualNumber;
 
     [Header("Player Component")]
     private Animator playerAnimator;
     private Weapon weapon;
     private PlayerInput playerInput;
+    #endregion
 
-
-
+    #region Built In Methods
     private void Start()
     {
         playerAnimator = GetComponent<Animator>();
-        weapon = GetComponentInChildren<Weapon>();
-        playerInput = GetComponent<PlayerInput>();  
+        playerInput = GetComponent<PlayerInput>();
+
+        InventoryChecker();
     }
 
     private void Update()
     {
-        WeaponCheckStatut();
+        if (weapon != null) WeaponCheckStatut();
 
         ShootStatut();
+
+        Inventory();
+    }
+    #endregion
+
+
+    #region Functions
+    /// <summary>
+    /// Permet de véirifier si le joueur possède une arme au start
+    /// </summary>
+    private void InventoryChecker()
+    {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            weapon = inventory[i].GetComponentInChildren<Weapon>();
+
+            if (weapon != null) weapon.gameObject.SetActive(false);
+            else if (weapon == null) inventory[i].gameObject.SetActive(false);
+        }
+
+        weaponInHand = inventory[0];
+        weaponInHand.SetActive(true);
+        actualNumber = 0;
     }
 
     private void WeaponCheckStatut()
@@ -38,4 +71,21 @@ public class Player : MonoBehaviour
         if (playerInput.CanShoot) playerAnimator.SetBool("isShooting", true);
         else if (!playerInput.CanShoot) playerAnimator.SetBool("isShooting", false);
     }
+
+    private void Inventory()
+    {
+        mouseWheelInput = playerInput.WheelInput;
+
+        if (mouseWheelInput.y > 0.1f)
+        {
+            if (actualNumber == inventory.Length) actualNumber = -1;
+            weaponInHand = inventory[actualNumber++];
+        }
+        else if (mouseWheelInput.y < -0.1f)
+        {
+            if (actualNumber == 0) actualNumber = 4;
+            weaponInHand = inventory[actualNumber--];
+        }
+    }
+    #endregion
 }

@@ -58,7 +58,7 @@ public class Weapon : MonoBehaviour
     #region Functions
     private void Shoot()
     {
-        if (playerInput.canShoot)
+        if (playerInput.CanShoot)
         {
             if (!singleShot)
             {
@@ -86,7 +86,7 @@ public class Weapon : MonoBehaviour
                 time = 0f;
             }
         }
-        else if (!playerInput.canShoot)
+        else if (!playerInput.CanShoot)
         {
             singleShot = false;
             time = 0f;
@@ -136,7 +136,7 @@ public class Weapon : MonoBehaviour
 
         //recoilPlayer = new Vector3(0f, 0f, Random.Range(1f, 10f));
 
-        cc.Move(recoilPlayer);
+        //cc.Move(recoilPlayer);
         //playerTransform.position += recoilPlayer;
     }
     #endregion

@@ -6,7 +6,7 @@ public class PlayerInput : MonoBehaviour
     #region Variables
     private Vector2 moveInput;
     private bool canInteract;
-    public bool canShoot;
+    private bool canShoot;
 
     #endregion
 

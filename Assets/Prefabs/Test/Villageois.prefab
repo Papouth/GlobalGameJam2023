@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 5931175427400081025}
   - component: {fileID: 8640847725481077860}
   - component: {fileID: 3957438822626221274}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NPCWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

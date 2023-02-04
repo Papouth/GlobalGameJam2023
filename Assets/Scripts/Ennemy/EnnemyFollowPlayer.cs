@@ -8,6 +8,8 @@ public class EnnemyFollowPlayer : MonoBehaviour {
     private GameObject player;
     public NavMeshAgent agent;
 
+    public Ennemy ennemy;
+
     private float timer = 0;
     public float consciousness = 3;
     public float distance = 3;
@@ -17,10 +19,13 @@ public class EnnemyFollowPlayer : MonoBehaviour {
     private void Start() {
         player = FindObjectOfType<PlayerMovement>().gameObject;
         agent = GetComponent<NavMeshAgent>();
+        ennemy = GetComponent<Ennemy>();
     }
 
     void Update() 
     {
+        if(player.GetComponent<Player>().playerLife <= 0) return;
+        
         timer += Time.deltaTime;
         if(timer >= consciousness) {
             timer = 0;

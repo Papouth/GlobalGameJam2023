@@ -9,7 +9,8 @@ public class Weapon : MonoBehaviour
     [Header("Munitions")]
     [SerializeField] private int ammoCount;
     [SerializeField] private int ammoInMag;
-    [SerializeField] private int magazineCount;
+    public int magazineCount;
+    [HideInInspector] public int magazineCountBase;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletSpawn;
 
@@ -49,6 +50,8 @@ public class Weapon : MonoBehaviour
         playerInput = GetComponentInParent<PlayerInput>();
 
         recoilLimitTimer = fireRate / 5f;
+
+        magazineCountBase = magazineCount;
     }
 
     private void Update()

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,10 +11,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float turnSmoothTime = 0.1f;
     [SerializeField] private float turnSmoothVelocity = 0.1f;
     [SerializeField] private float moveSpeed = 3f;
-
     [SerializeField] private LayerMask groundLayer;
-
     [SerializeField] private Vector3 targetPos;
+    [HideInInspector] public bool inAmmoBox;
+
 
     [Header("Player Component")]
     private PlayerInput playerInput;
@@ -31,13 +30,14 @@ public class PlayerMovement : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         cc = GetComponent<CharacterController>();
         animPlayer = GetComponent<Animator>();
+        cam = FindObjectOfType<Camera>();
     }
 
     private void Update()
     {
-        MouseLocomotion();
+        MouseAim();
 
-        Locomotion();
+        if (!inAmmoBox) Locomotion();
     }
     #endregion
 
@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         cc.Move(movement);
     }
 
-    private void MouseLocomotion()
+    private void MouseAim()
     {
         if (!playerInput) return;
 

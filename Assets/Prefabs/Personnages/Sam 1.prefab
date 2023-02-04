@@ -789,7 +789,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoCount: 8
   ammoInMag: 8
-  magazineCount: 3
+  magazineCount: 2
+  magazineCountBase: 0
   bulletPrefab: {fileID: 3001794991091450940, guid: f589d6f3e753a0e449911eef0ea38cae, type: 3}
   bulletSpawn: {fileID: 0}
   fireRate: 1
@@ -1333,6 +1334,7 @@ MonoBehaviour:
   ammoCount: 15
   ammoInMag: 15
   magazineCount: 4
+  magazineCountBase: 0
   bulletPrefab: {fileID: 2033580573770894110, guid: 75e40444eadb6234988a2cb7a7986292, type: 3}
   bulletSpawn: {fileID: 0}
   fireRate: 0.16
@@ -1486,6 +1488,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   targetPos: {x: 0, y: 0, z: 0}
+  inAmmoBox: 0
   cam: {fileID: 0}
 --- !u!114 &1335125115351358009
 MonoBehaviour:
@@ -2059,6 +2062,7 @@ MonoBehaviour:
   ammoCount: 100
   ammoInMag: 100
   magazineCount: 2
+  magazineCountBase: 0
   bulletPrefab: {fileID: 6206150154581530509, guid: 52f7973fb6fc04d4da3462686c355858, type: 3}
   bulletSpawn: {fileID: 0}
   fireRate: 0.05

@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject weaponInHand;
     [SerializeField] private int actualNumber;
 
+    public int vignes = 0;
+
     [Header("Player Component")]
     private Animator playerAnimator;
     private Weapon weapon;

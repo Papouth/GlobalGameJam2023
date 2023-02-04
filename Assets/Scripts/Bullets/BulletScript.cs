@@ -36,6 +36,7 @@ public class BulletScript : MonoBehaviour
         {
             // On récupère la vie de mon ennemi et on lui enlève le nombre de dégats de la balle
             other.GetComponent<Ennemy>().ennemyHealth -= bulletDamage;
+            Destroy(gameObject);
         }
     }
     #endregion

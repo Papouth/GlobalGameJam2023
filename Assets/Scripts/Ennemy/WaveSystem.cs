@@ -1,10 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.ExceptionServices;
-using Unity.Collections.LowLevel.Unsafe;
-using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
@@ -17,21 +11,19 @@ public class WaveSystem : MonoBehaviour
     [SerializeField] private int eachWave = 5; //pas de nom pour la variable désolééé
 
     [SerializeField] private int timeBetweenWaves = 5;
-    [SerializeField] private int spawnDelay = 2;
+    [SerializeField] private int spawnDelay = 10;
 
     [SerializeField] private GameObject[] spawners;
     [SerializeField] private GameObject enemy;
     #endregion
 
-    private bool isCooldown = false;
-
+    private bool isCooldown;
+    public bool inWave;
     private int nextWaveMobs;
-
     private int currentWave = 0;
-
     private int needSpawn;
 
-    public bool inWave = false;
+    private float time = 0;
 
     // Start is called before the first frame update
     void Start() 
@@ -49,12 +41,19 @@ public class WaveSystem : MonoBehaviour
         if(inWave && seeIfTheyAreAllDead()) {
             endWave();
         }
+
+        time += Time.deltaTime;
+
+        if(time > spawnDelay && needSpawn > 0) {
+            Instantiate(enemy, pickRandomSpawner(), Quaternion.identity);
+            needSpawn--;
+
+            time = 0f;
+        }
     }
 
     private Vector3 pickRandomSpawner() {
-        System.Random random = new System.Random();
-
-        return spawners[random.Next(spawners.Length)].transform.position;
+        return spawners[Random.Range(0, spawners.Length)].transform.position;
     }
 
     private void startWave() {
@@ -66,7 +65,7 @@ public class WaveSystem : MonoBehaviour
 
         Debug.Log("Début de la vague");
 
-        StartCoroutine(spawnWave());
+        //StartCoroutine(spawnWave());
 
         inWave = true;
     }
@@ -82,7 +81,7 @@ public class WaveSystem : MonoBehaviour
 
 
     private bool seeIfTheyAreAllDead() {
-        UnityEngine.SceneManagement.Scene scene = SceneManager.GetActiveScene();
+        Scene scene = SceneManager.GetActiveScene();
 
         foreach(GameObject obj in scene.GetRootGameObjects()) {
             if(obj.GetComponent<Ennemy>() != null) {
@@ -92,16 +91,19 @@ public class WaveSystem : MonoBehaviour
 
         return true;
     }
-
+    /*
     private IEnumerator spawnWave() {
+        Debug.Log("Bon ça spawn là");
         for(int i = 0; i < needSpawn; i++) {
+
             Instantiate(enemy, pickRandomSpawner(), Quaternion.identity);
 
             //SPAWN ENNEMY
 
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(spawnDelay);
         }
     }
+    */
 
     private IEnumerator StartCooldown() {
         isCooldown = true;

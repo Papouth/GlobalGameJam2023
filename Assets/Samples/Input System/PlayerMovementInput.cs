@@ -62,6 +62,15 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Wheel"",
+                    ""type"": ""Value"",
+                    ""id"": ""7e3d9758-52d9-48dd-aa11-cd7e8d86e24b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                     ""action"": ""StopShoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f405454e-4b2c-4078-abc7-c224e891b0e7"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Wheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         m_PlayerMap_Interact = m_PlayerMap.FindAction("Interact", throwIfNotFound: true);
         m_PlayerMap_Shoot = m_PlayerMap.FindAction("Shoot", throwIfNotFound: true);
         m_PlayerMap_StopShoot = m_PlayerMap.FindAction("StopShoot", throwIfNotFound: true);
+        m_PlayerMap_Wheel = m_PlayerMap.FindAction("Wheel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,6 +248,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_Interact;
     private readonly InputAction m_PlayerMap_Shoot;
     private readonly InputAction m_PlayerMap_StopShoot;
+    private readonly InputAction m_PlayerMap_Wheel;
     public struct PlayerMapActions
     {
         private @PlayerMovementInput m_Wrapper;
@@ -235,6 +257,7 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_PlayerMap_Interact;
         public InputAction @Shoot => m_Wrapper.m_PlayerMap_Shoot;
         public InputAction @StopShoot => m_Wrapper.m_PlayerMap_StopShoot;
+        public InputAction @Wheel => m_Wrapper.m_PlayerMap_Wheel;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -256,6 +279,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @StopShoot.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnStopShoot;
                 @StopShoot.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnStopShoot;
                 @StopShoot.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnStopShoot;
+                @Wheel.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnWheel;
+                @Wheel.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnWheel;
+                @Wheel.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnWheel;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -272,6 +298,9 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
                 @StopShoot.started += instance.OnStopShoot;
                 @StopShoot.performed += instance.OnStopShoot;
                 @StopShoot.canceled += instance.OnStopShoot;
+                @Wheel.started += instance.OnWheel;
+                @Wheel.performed += instance.OnWheel;
+                @Wheel.canceled += instance.OnWheel;
             }
         }
     }
@@ -282,5 +311,6 @@ public partial class @PlayerMovementInput : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnStopShoot(InputAction.CallbackContext context);
+        void OnWheel(InputAction.CallbackContext context);
     }
 }

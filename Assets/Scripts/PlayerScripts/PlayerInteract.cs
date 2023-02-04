@@ -47,7 +47,6 @@ public class PlayerInteract : MonoBehaviour
 
             if(interactable != null)
             {
-                Debug.Log("here" + interactable);
                 interactable.Interact();
             }
         }

@@ -34,12 +34,8 @@ public class BulletScript : MonoBehaviour
     {
         if (other.CompareTag("Ennemy"))
         {
-            // On récupère la vie de mon ennemi et on lui enlève le nombre de dégats de la balle
+            // On récupère la vie de mon ennemi et on lui enlève le nombre de dégâts de la balle
             other.GetComponent<Ennemy>().ennemyHealth -= bulletDamage;
-
-
-            other.transform.position = transform.TransformDirection(0f, 0f, -transform.localPosition.z - 1f);
-
 
             Destroy(gameObject);
         }

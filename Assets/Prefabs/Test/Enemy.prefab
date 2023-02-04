@@ -68,7 +68,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 2
-  attackRange: 2
 --- !u!1 &8517683054151372039
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +85,7 @@ GameObject:
   - component: {fileID: 8517683054151372037}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,7 +205,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 20
-  target: {fileID: 0}
 --- !u!114 &8517683054151372037
 MonoBehaviour:
   m_ObjectHideFlags: 0

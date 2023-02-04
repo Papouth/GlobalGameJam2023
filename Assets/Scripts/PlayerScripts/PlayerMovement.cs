@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput playerInput;
     [SerializeField] private Camera cam;
     private CharacterController cc;
+    private Animator animPlayer;
     #endregion
 
 
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         cc = GetComponent<CharacterController>();
+        animPlayer = GetComponent<Animator>();
     }
 
     private void Update()
@@ -39,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
         if (!playerInput) return;
 
         directionInput.Set(playerInput.MoveInput.x, 0, playerInput.MoveInput.y);
+
+        animPlayer.SetFloat("Movement", directionInput.magnitude); 
 
         if (directionInput.magnitude >= 0.1f)
         {

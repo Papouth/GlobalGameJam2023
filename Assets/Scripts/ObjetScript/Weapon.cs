@@ -24,7 +24,6 @@ public class Weapon : MonoBehaviour
     private float recoilLimitTimer;
     private bool recoilWeapon;
 
-    //private Transform playerTransform;
     [SerializeField] private float valueRecoilPlayer;
     private Vector3 recoilPlayer;
     [SerializeField] private AudioSource shotSound;
@@ -41,7 +40,6 @@ public class Weapon : MonoBehaviour
     {
         cc = GetComponentInParent<CharacterController>();
         playerInput = GetComponentInParent<PlayerInput>();
-        //playerTransform = GetComponentInParent<Transform>();
 
         recoilLimitTimer = fireRate / 5f;
     }
@@ -57,6 +55,8 @@ public class Weapon : MonoBehaviour
     #endregion
 
     #region Functions
+    
+
     private void Shoot()
     {
         if (playerInput.CanShoot)

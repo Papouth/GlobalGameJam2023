@@ -8,10 +8,7 @@ public class EnnemyAttack : MonoBehaviour
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private int ennemyDamage = 10;
 
-    private bool playerInRange = false;
     private float attackTime = 0;
-
-
 
     private void OnTriggerStay(Collider other)
     {

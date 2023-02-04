@@ -3,58 +3,48 @@ using UnityEngine;
 
 public class WaveSystem : MonoBehaviour
 {
-    #region Parametres
-    [SerializeField] private int numberOfWaves = 10;
+    #region Variables
+    [Header("Paremeters")]
     [SerializeField] private int baseMonsters = 20;
     [SerializeField] private int eachWave = 5; //pas de nom pour la variable désolééé
 
-    [SerializeField] private int timeBetweenWaves = 5;
-    [SerializeField] private int spawnDelay = 3;
+    [SerializeField] private float timeBetweenWaves = 5;
+    [SerializeField] private float spawnDelay = 3;
 
     [SerializeField] private GameObject[] spawners;
     [SerializeField] private GameObject enemy;
-    #endregion
 
-    #region variables
+
     private bool isCooldown;
     public bool inWave;
 
     private int currentWave = 0;
     private int needSpawn = 0;
 
-    private float time = 0;
+    private float timeForSpawn = 0;
     #endregion
 
     #region Unity built-ins
-    // Start is called before the first frame update
-    void Start() 
-    {
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
+        timeForSpawn += Time.deltaTime;
 
-        if(time > spawnDelay && needSpawn > 0) {
-            Debug.Log("spawning");
+        if(timeForSpawn > spawnDelay && needSpawn > 0) {
+            //Debug.Log("spawning");
 
             Instantiate(enemy, pickRandomSpawner(), Quaternion.identity);
 
             needSpawn--;
 
-            time = 0f;
-        }
-
-        if(currentWave > numberOfWaves) {
-            //TRIGGER END
+            timeForSpawn = 0f;
         }
 
         if(!inWave && !isCooldown) {
             startWave();
         }
 
-        if(inWave && seeIfTheyAreAllDead() && needSpawn == 0) {
+        if(inWave && DeathChecker() && needSpawn == 0) {
             endWave();
         }
     }
@@ -68,7 +58,7 @@ public class WaveSystem : MonoBehaviour
 
         needSpawn = baseMonsters + (eachWave * currentWave);
 
-        Debug.Log("Spawning wave #" + currentWave + " with " + needSpawn + " mobs");
+        //Debug.Log("Spawning wave #" + currentWave + " with " + needSpawn + " mobs");
 
         inWave = true;
     }
@@ -76,7 +66,7 @@ public class WaveSystem : MonoBehaviour
     private void endWave() {
         inWave = false;
 
-        Debug.Log("Fin de la vague");
+        //Debug.Log("Fin de la vague");
 
         StartCoroutine(StartCooldown());
     }
@@ -88,8 +78,7 @@ public class WaveSystem : MonoBehaviour
         return spawners[Random.Range(0, spawners.Length)].transform.position;
     }
 
-
-    private bool seeIfTheyAreAllDead() {
+    private bool DeathChecker() {
         GameObject[] ennemies = GameObject.FindGameObjectsWithTag("Ennemy");
 
         return ennemies.Length == 0;

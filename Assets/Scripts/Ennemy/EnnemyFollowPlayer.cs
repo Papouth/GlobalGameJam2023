@@ -14,6 +14,8 @@ public class EnnemyFollowPlayer : MonoBehaviour {
     public float consciousness = 3;
     public float distance = 3;
 
+    public float procheDuJoueur = 3f;
+
     private Vector3 lastPosition;
 
     private void Start() {
@@ -25,6 +27,12 @@ public class EnnemyFollowPlayer : MonoBehaviour {
     void Update() 
     {
         if(player.GetComponent<Player>().playerLife <= 0) return;
+
+        if(Vector3.Distance(transform.position, lastPosition) < procheDuJoueur) {
+            agent.SetDestination(player.transform.position);
+            
+            return;
+        }
         
         timer += Time.deltaTime;
         if(timer >= consciousness) {

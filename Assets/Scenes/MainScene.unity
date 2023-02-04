@@ -176,8 +176,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7723725221263433118, guid: ccbf17e83d904fb4d83e9f8560465de1, type: 3}
   bulletSpawn: {fileID: 0}
   fireRate: 0.3
-  recoilGun: {x: 0, y: 0.1, z: 0}
-  recoilPlayer: {x: 0, y: 0, z: 0.3}
+  recoilGunAmount: 0
+  recoilPlayer: {x: 0, y: 0, z: 3}
   shotSound: {fileID: 0}
   bulletCasing: {fileID: 0}
   bulletCasingPos: {fileID: 0}

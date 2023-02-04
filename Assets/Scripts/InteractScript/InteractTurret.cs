@@ -13,18 +13,12 @@ public class InteractTurret : Interactable
 
     public NPC npcDedans = null;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         if(teleportPoint == null) teleportPoint = turretPoint;
 
         npcassigner = FindObjectOfType<NPCAssigner>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public override void Interact() {
@@ -34,6 +28,5 @@ public class InteractTurret : Interactable
         } else {
             Debug.Log("Turret point déjà occupé !");
         }
-
     }
 }

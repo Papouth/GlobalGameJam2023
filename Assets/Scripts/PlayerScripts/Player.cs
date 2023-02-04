@@ -10,13 +10,14 @@ public class Player : MonoBehaviour
 
     [Header("Player Inventory")]
     private Vector3 mouseWheelInput;
-    //private bool weaponEquiped;
-    [SerializeField] private GameObject[] inventory = new GameObject[3];
+    public GameObject[] inventory = new GameObject[3];
     [SerializeField] private GameObject weaponInHand;
     [SerializeField] private int actualNumber;
 
+    public int vignes = 0;
+
     [Header("Player Component")]
-    private Animator playerAnimator;
+    public Animator playerAnimator;
     private Weapon weapon;
     private PlayerInput playerInput;
     #endregion
@@ -50,9 +51,6 @@ public class Player : MonoBehaviour
         for (int i = 0; i < inventory.Length; i++)
         {
             weapon = inventory[i].GetComponentInChildren<Weapon>();
-
-            //if (weapon != null) weapon.gameObject.SetActive(true); // false
-            //else if (weapon == null) inventory[i].gameObject.SetActive(false);
 
             inventory[i].gameObject.SetActive(false);
         }

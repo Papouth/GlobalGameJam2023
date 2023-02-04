@@ -90,12 +90,15 @@ public class NPC : Interactable {
     #endregion
 
     #region Interactable
-    public override void Interact() {
-        if(assigner.grabbedNPC == null) {
+    public override void Interact() 
+    {
+        if(assigner.grabbedNPC == null) 
+        {
             Debug.Log("Grabbed NPC");
             assigner.grabbedNPC = this;
-        } else if(assigner.grabbedNPC == this) 
-            {
+        } 
+        else if(assigner.grabbedNPC == this) 
+        {
             Debug.Log("Ungrabbed NPC");
             assigner.grabbedNPC = null;
         }

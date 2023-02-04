@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -39,13 +40,15 @@ public class PlayerInteract : MonoBehaviour
     }
     #endregion
 
-    public virtual void Detector() {
+    public virtual void Detector()
+    {
         interactableCount = Physics.OverlapSphereNonAlloc(interactionPoint.position, radius, colliders, interactableLayer);
 
-        if(interactableCount > 0) {
+        if (interactableCount > 0)
+        {
             interactable = NearestCollider(colliders);
 
-            if(interactable != null)
+            if (interactable != null)
             {
                 interactable.Interact();
             }
@@ -55,21 +58,32 @@ public class PlayerInteract : MonoBehaviour
         interactable = null;
     }
 
-    private Interactable NearestCollider(Collider[] cols) {
+    private Interactable NearestCollider(Collider[] cols)
+    {
         float nearestInteractable = 9999;
         Collider nearestCol = null;
 
-        foreach(Collider col in cols) {
-            if(col == null) continue;
+        foreach (Collider col in cols)
+        {
+            if (col == null) continue;
 
             float currentDistance = Vector3.Distance(col.transform.position, transform.position);
-            if(currentDistance <= nearestInteractable) {
+            if (currentDistance <= nearestInteractable)
+            {
                 nearestInteractable = currentDistance;
                 nearestCol = col;
             }
         }
-        if(nearestCol.GetComponent(typeof(Interactable)) != null) {
+        if (nearestCol.GetComponent(typeof(Interactable)) != null)
+        {
             return nearestCol.GetComponent<Interactable>();
-        } else return null;
+        }
+        else return null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(interactionPoint.position, radius);
     }
 }

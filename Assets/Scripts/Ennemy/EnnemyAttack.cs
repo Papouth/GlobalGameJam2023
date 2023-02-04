@@ -9,8 +9,6 @@ public class EnnemyAttack : MonoBehaviour
 
     private float attackTime = 0;
 
-
-
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))

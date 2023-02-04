@@ -6,7 +6,13 @@ using UnityEngine.AI;
 public class EnnemyFollowPlayer : MonoBehaviour {
     
     private GameObject player;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
+
+    private float timer = 0;
+    public float consciousness = 3;
+    public float distance = 3;
+
+    private Vector3 lastPosition;
 
     private void Start() {
         player = FindObjectOfType<PlayerMovement>().gameObject;
@@ -15,7 +21,18 @@ public class EnnemyFollowPlayer : MonoBehaviour {
 
     void Update() 
     {
+        timer += Time.deltaTime;
+        if(timer >= consciousness) {
+            timer = 0;
+
+            lastPosition = player.transform.position;
+
+            agent.SetDestination(player.transform.position);
+        }
+        
+        if(Vector3.Distance(transform.position, lastPosition) < distance) {
+            agent.SetDestination(player.transform.position);
+        }
         //transform.LookAt(new Vector3(player.transform.position.x, 0, player.transform.position.z));
-        agent.destination = player.transform.position;
     } 
 }

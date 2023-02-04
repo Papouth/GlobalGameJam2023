@@ -4,18 +4,19 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPC : Interactable
-{
+public class NPC : Interactable {
+
+    #region Variables
     private NavMeshAgent agent;
-
-    private InteractTurret turret;
-
-    private bool isMoving;
-
     private NPCAssigner assigner;
 
-    private float teleportDistance = 1.5f;
+    public float teleportDistance = 1.5f;
 
+    public InteractTurret turret;
+    public bool isMoving;
+    #endregion
+
+    #region Built-ins
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -25,16 +26,28 @@ public class NPC : Interactable
     void Update() {
         if(isMoving) {
             if(turret == null) {
-                TurretCheck();
+                TurretTeleportCheck();
             }
         } else {
             moveCheck();
         }
+
+        /*
+        if(!isMoving && turret != null) {
+            TurretAI();
+        }
+        */
+    }
+    #endregion
+
+
+    #region Checks AI
+    private void TurretAI() {
         
     }
 
     private void moveCheck() {
-        if(assigner.grabbedNPC == null) return;
+        if(assigner.grabbedNPC == null || turret != null) return;
 
         if(assigner.grabbedNPC.name == name && assigner.turret != null) {
 
@@ -47,7 +60,7 @@ public class NPC : Interactable
         }
     }
 
-    private void TurretCheck() {
+    private void TurretTeleportCheck() {
 
         Vector3 npcPosition = transform.position;
         Vector3 destination = assigner.turret.teleportPoint.position;
@@ -57,17 +70,18 @@ public class NPC : Interactable
             transform.position = assigner.turret.turretPoint.position;
             //transform.LookAt(assigner.turret.LookPoint);
 
-            assigner.turret.npcDedans = this;
-            assigner.grabbedNPC = null;
-            assigner.turret = null;
-
             isMoving = false;
 
             turret = assigner.turret;
             agent.enabled = false;
+
+            assigner.turret.npcDedans = this;
+            assigner.grabbedNPC = null;
+            assigner.turret = null;
         }
     }
 
+    
     private Vector3 getClosestPosition(Vector3 destination) {
         NavMeshHit myNavHit;
         if(NavMesh.SamplePosition(destination, out myNavHit, 100, -1)) {
@@ -76,7 +90,9 @@ public class NPC : Interactable
 
         return destination;
     }
+    #endregion
 
+    #region Interactable
     public override void Interact() {
         if(assigner.grabbedNPC == null) {
             Debug.Log("Grabbed NPC");
@@ -87,4 +103,5 @@ public class NPC : Interactable
             assigner.grabbedNPC = null;
         }
     }
+    #endregion
 }

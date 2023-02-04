@@ -1,36 +1,37 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 
 public class EnnemyAttack :MonoBehaviour {
 
     [SerializeField] private float attackCooldown = 2f;
-    [SerializeField] private float attackRange = 2f;
 
-    [SerializeField] private GameObject target;
-
-    private bool isAvailable = true;
-
-    private bool attacked;
+    private bool playerInRange = false;
+    private float attackTime = 0;
 
     // Start is called before the first frame update
     void Start() {
     }
 
-    // Update is called once per frame
-    void Update() {
-        if(isAvailable) {
-            if(Vector3.Distance(GetComponent<Transform>().position, target.transform.position) < attackRange) {
-                Debug.Log("attacked");
-                StartCoroutine(AttackCooldown());
-            }
+    private void OnTriggerEnter(Collider other) {
+        if(other.CompareTag("Player")) {
+             playerInRange = true;
+             Debug.Log("in range");
+        } else {
+            playerInRange = false;
         }
     }
 
-    public IEnumerator AttackCooldown() {
-        isAvailable = false;
-        yield return new WaitForSeconds(attackCooldown);
-        isAvailable = true;
+    // Update is called once per frame
+    void Update() {
+        attackTime += Time.deltaTime;
+        if(attackTime > attackCooldown && playerInRange) {
+            Debug.Log("Attacked !");
+
+            attackTime = 0;
+        }
     }
 }

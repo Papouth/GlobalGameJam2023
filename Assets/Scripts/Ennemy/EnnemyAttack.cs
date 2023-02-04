@@ -1,37 +1,28 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor;
 using UnityEngine;
 
-public class EnnemyAttack :MonoBehaviour {
+public class EnnemyAttack : MonoBehaviour
+{
 
     [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] private int ennemyDamage = 10;
 
     private bool playerInRange = false;
     private float attackTime = 0;
 
-    // Start is called before the first frame update
-    void Start() {
-    }
 
-    private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Player")) {
-             playerInRange = true;
-             Debug.Log("in range");
-        } else {
-            playerInRange = false;
-        }
-    }
 
-    // Update is called once per frame
-    void Update() {
-        attackTime += Time.deltaTime;
-        if(attackTime > attackCooldown && playerInRange) {
-            Debug.Log("Attacked !");
-
-            attackTime = 0;
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            attackTime += Time.deltaTime;
+            if (attackTime > attackCooldown)
+            {
+                other.GetComponent<Player>().playerLife -= ennemyDamage;
+                attackTime = 0;
+            }
         }
     }
 }

@@ -14,7 +14,6 @@ public class WaveSystem : MonoBehaviour
     [SerializeField] private GameObject[] spawners;
     [SerializeField] private GameObject enemy;
 
-
     private bool isCooldown;
     public bool inWave;
 
@@ -22,6 +21,7 @@ public class WaveSystem : MonoBehaviour
     private int needSpawn = 0;
 
     private float timeForSpawn = 0;
+
     #endregion
 
     #region Unity built-ins

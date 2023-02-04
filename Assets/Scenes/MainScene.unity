@@ -656,6 +656,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5755812043137679289, guid: 41fb25b89ba09c342b18cd7175750173, type: 3}
   m_PrefabInstance: {fileID: 469190556}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &700745747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7820182586674943846, guid: 41fb25b89ba09c342b18cd7175750173, type: 3}
+  m_PrefabInstance: {fileID: 469190556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &700745752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700745747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb0d5272f8affab4cb85406f69f659b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoCount: 8
+  ammoInMag: 8
+  magazineCount: 3
+  bulletPrefab: {fileID: 3001794991091450940, guid: f589d6f3e753a0e449911eef0ea38cae, type: 3}
+  bulletSpawn: {fileID: 0}
+  fireRate: 1
+  recoilGunAmount: 30
+  valueRecoilPlayer: 3.5
+  shotSound: {fileID: 0}
+  bulletCasing: {fileID: 0}
+  bulletCasingPos: {fileID: 0}
+  playerInput: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,6 +979,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525618373}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1875048204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5245308736493220702, guid: 41fb25b89ba09c342b18cd7175750173, type: 3}
+  m_PrefabInstance: {fileID: 469190556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1875048209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875048204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb0d5272f8affab4cb85406f69f659b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoCount: 15
+  ammoInMag: 15
+  magazineCount: 4
+  bulletPrefab: {fileID: 2033580573770894110, guid: 75e40444eadb6234988a2cb7a7986292, type: 3}
+  bulletSpawn: {fileID: 0}
+  fireRate: 0.16
+  recoilGunAmount: 1
+  valueRecoilPlayer: 0.3
+  shotSound: {fileID: 0}
+  bulletCasing: {fileID: 0}
+  bulletCasingPos: {fileID: 0}
+  playerInput: {fileID: 0}
 --- !u!1 &1933453985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,6 +1198,35 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!1 &2040476668 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4627965218910609454, guid: 41fb25b89ba09c342b18cd7175750173, type: 3}
+  m_PrefabInstance: {fileID: 469190556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2040476673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040476668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb0d5272f8affab4cb85406f69f659b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoCount: 100
+  ammoInMag: 100
+  magazineCount: 2
+  bulletPrefab: {fileID: 6206150154581530509, guid: 52f7973fb6fc04d4da3462686c355858, type: 3}
+  bulletSpawn: {fileID: 0}
+  fireRate: 0.05
+  recoilGunAmount: 0.5
+  valueRecoilPlayer: 0.2
+  shotSound: {fileID: 0}
+  bulletCasing: {fileID: 0}
+  bulletCasingPos: {fileID: 0}
+  playerInput: {fileID: 0}
 --- !u!1001 &2869027302380059122
 PrefabInstance:
   m_ObjectHideFlags: 0

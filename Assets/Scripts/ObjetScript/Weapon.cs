@@ -24,9 +24,13 @@ public class Weapon : MonoBehaviour
     private float recoilLimitTimer;
     private bool recoilWeapon;
 
-    //private Transform playerTransform;
+    [Header("Player Recoil")]
     [SerializeField] private float valueRecoilPlayer;
     private Vector3 recoilPlayer;
+
+    private float reloadTime = 3.2f;
+    private float timerToReload = 0f;
+
     [SerializeField] private AudioSource shotSound;
     [SerializeField] private GameObject bulletCasing;
     [SerializeField] private Transform bulletCasingPos;
@@ -34,14 +38,15 @@ public class Weapon : MonoBehaviour
     [Header("Component")]
     [SerializeField] private PlayerInput playerInput;
     private CharacterController cc;
+    private Animator animPlayer;
     #endregion
+
 
     #region Built In Methods
     private void Start()
     {
         cc = GetComponentInParent<CharacterController>();
         playerInput = GetComponentInParent<PlayerInput>();
-        //playerTransform = GetComponentInParent<Transform>();
 
         recoilLimitTimer = fireRate / 5f;
     }
@@ -56,10 +61,11 @@ public class Weapon : MonoBehaviour
     }
     #endregion
 
+
     #region Functions
     private void Shoot()
     {
-        if (playerInput.CanShoot)
+        if (playerInput.CanShoot && ammoCount > 0)
         {
             if (!singleShot)
             {
@@ -99,11 +105,24 @@ public class Weapon : MonoBehaviour
         // Out Of Ammo Reload
         if (ammoCount == 0 && magazineCount > 0)
         {
-            // Reset du nombre de balle dans le chargeur
-            ammoCount = ammoInMag;
+            // On joue l'animation de rechargement de l'arme
+            animPlayer = GetComponentInParent<Animator>();
+            animPlayer.SetTrigger("Reload");
 
-            // On retire un chargeur au joueur
-            magazineCount--;
+            timerToReload += Time.deltaTime;
+
+            if (timerToReload > reloadTime)
+            {
+                animPlayer.ResetTrigger("Reload");
+
+                // Reset du nombre de balle dans le chargeur
+                ammoCount = ammoInMag;
+
+                // On retire un chargeur au joueur
+                magazineCount--;
+
+                timerToReload = 0f;
+            }
         }
     }
 

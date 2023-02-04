@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Ennemy
   - Villageois
+  - Arbre
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Interactable

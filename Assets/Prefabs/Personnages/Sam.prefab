@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &764628516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 764628517}
+  m_Layer: 0
+  m_Name: Interaction point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &764628517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764628516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.046, z: 0.526}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1840937030858042682}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &567370218040576190
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +346,7 @@ Transform:
   - {fileID: 432723216958479333}
   - {fileID: 3506038872854807377}
   - {fileID: 7346366076865513494}
+  - {fileID: 764628517}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -414,6 +446,12 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0.1
   moveSpeed: 5
+<<<<<<< HEAD
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+=======
+>>>>>>> main
   targetPos: {x: 0, y: 0, z: 0}
   cam: {fileID: 0}
 --- !u!114 &3856581967115565803
@@ -428,11 +466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4478eaf1a3fdc43b892d2bf467f3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0
+  radius: 2.35
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 0
-  interactionPoint: {fileID: 0}
+    m_Bits: 64
+  interactionPoint: {fileID: 764628517}
   colliders:
   - {fileID: 0}
   - {fileID: 0}

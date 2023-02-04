@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float turnSmoothVelocity = 0.1f;
     [SerializeField] private float moveSpeed = 3f;
 
+    [SerializeField] private LayerMask groundLayer;
+
     [SerializeField] private Vector3 targetPos;
 
     [Header("Player Component")]
@@ -73,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
         {
             targetPos = new Vector3(hit.point.x, transform.position.y, hit.point.z);
             transform.LookAt(targetPos);

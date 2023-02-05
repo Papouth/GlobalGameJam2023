@@ -5,11 +5,13 @@ public class InteractWall : Interactable
     [SerializeField] private GameObject wall;
     [SerializeField] private int vineNeeded = 5;
 
+    [SerializeField] public int maxLife = 25;
+
+    public int wallLife = 0;
     private Player player;
 
     // Start is called before the first frame update
-    void Start() 
-    {
+    void Start() {
         player = FindObjectOfType<Player>();
         wall.SetActive(false);
     }
@@ -17,7 +19,9 @@ public class InteractWall : Interactable
     // Update is called once per frame
     void Update()
     {
-    
+       if(wallLife <= 0) {
+            wall.SetActive(false);
+        }
     }
 
     public override void Interact() {
@@ -25,6 +29,8 @@ public class InteractWall : Interactable
             player.vignes -= vineNeeded;
 
             wall.SetActive(true);
+
+            wallLife = maxLife;
         }
     }
 

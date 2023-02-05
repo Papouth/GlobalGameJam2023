@@ -17,11 +17,23 @@ public class NPCWeapon :MonoBehaviour {
     private float timer = 0f;
     #endregion
 
-    #region Start
+    private bool canShoot = true;
+
+    #region Builtins
     void Awake() {
         if(rangeCollider == null) rangeCollider = GetComponent<SphereCollider>();
         npc = GetComponentInParent<NPC>();
         
+    }
+
+    private void Update() {
+        timer += Time.deltaTime;
+
+        if(timer > fireRate) {
+            canShoot = true;
+
+            timer = 0;
+        }
     }
     #endregion
 
@@ -51,16 +63,12 @@ public class NPCWeapon :MonoBehaviour {
             if(targetsInRange.Count > 0
                 && (npc.turret != null && !npc.isMoving) ) { //si on est bien dans une tourelle
 
-                Debug.Log("Timer run");
-                timer += Time.deltaTime;
+                    if(canShoot) {
+                        determineTarget();
+                        Shoot(currentTarget.transform.localPosition);
 
-                if(timer > fireRate) {
-                    Debug.Log("Finding target");
-                    determineTarget();
-                    Shoot(currentTarget.transform.localPosition);
-
-                    timer = 0;
-                }
+                        canShoot = false;
+                    }
             } else {
                 //reset rotation npc
             }

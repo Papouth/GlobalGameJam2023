@@ -30,7 +30,8 @@ public class NPC : Interactable {
 
         weapon.gameObject.SetActive(false);
 
-        balais = GetComponentInChildren<NPCBalais>().gameObject;
+<<<<<<< AmenixxBranch
+        if(GetComponentInChildren<NPCBalais>() != null) balais = GetComponentInChildren<NPCBalais>().gameObject;
     }
 
     void Update() {

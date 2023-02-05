@@ -30,6 +30,8 @@ public class WaveSystem : MonoBehaviour
 
     private float timeForSpawn = 0;
 
+    private int specialSpawnerCounter = 0;
+
     #endregion
 
     #region Unity built-ins
@@ -42,14 +44,19 @@ public class WaveSystem : MonoBehaviour
             //Debug.Log("spawning");
 
             if(neededSpecials > 0) {
-                Instantiate(pickRandomSpecial(), pickRandomSpawner(), Quaternion.identity);
-                
-                neededSpecials -= 1;
+                if(specialSpawnerCounter >= 3) {
+                    specialSpawnerCounter = 0;
+
+                    Instantiate(pickRandomSpecial(), pickRandomSpawner(), Quaternion.identity);
+
+                    neededSpecials -= 1;
+                }
             }
 
             Instantiate(enemy, pickRandomSpawner(), Quaternion.identity);
 
             needSpawn--;
+            specialSpawnerCounter++;
 
             timeForSpawn = 0f;
         }
@@ -82,6 +89,7 @@ public class WaveSystem : MonoBehaviour
 
     private void endWave() {
         inWave = false;
+        neededSpecials = 0;
 
         Debug.Log("Fin de la vague");
 

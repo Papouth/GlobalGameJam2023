@@ -12,14 +12,19 @@ public class EnnemyAttack : MonoBehaviour
 
     private EnnemyLook ennemyLook;
 
-    private bool attacked = false;
+    private bool canAttack = true;
 
     private void Start() {
         ennemy = GetComponentInParent<Ennemy>();
     }
 
-    private void onTriggerEnter(Collider other) {
-        if(!attacked) Attack(other);
+    private void Update() {
+        attackTime += Time.deltaTime;
+        if(attackTime > attackCooldown) {
+            canAttack = true;
+
+            attackTime = 0;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -28,11 +33,9 @@ public class EnnemyAttack : MonoBehaviour
     }
 
     private void Attack(Collider other) {
-        if(attacked) ennemy.animator.ResetTrigger("TriggerAttack");
+        if(!canAttack) return;
 
         if(other.CompareTag("Player") || other.CompareTag("Arbre") || other.CompareTag("Mur")) {
-            attackTime += Time.deltaTime;
-            if(attackTime > attackCooldown) {
                 switch(other.tag.ToString()) {
                     case "Player": {
                         if(!ennemy.isAttackingTree) other.GetComponent<Player>().playerLife -= ennemyDamage;
@@ -51,18 +54,20 @@ public class EnnemyAttack : MonoBehaviour
                 }
 
                 ennemy.ennemyLook.target = other.transform.position;
-                ennemy.animator.SetTrigger("TriggerAttack");
+                
+            ennemy.animator.SetTrigger("TriggerAttack");
 
-                StartCoroutine(resetTrigger());
+            resetTrigger();
+
+            canAttack = false;
 
                 Debug.Log("Attacked something");
                 attackTime = 0;
-            }
         }
     }
 
     private IEnumerator resetTrigger() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
         ennemy.animator.ResetTrigger("TriggerAttack");
     }
 }

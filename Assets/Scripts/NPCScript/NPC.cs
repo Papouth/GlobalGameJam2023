@@ -30,7 +30,7 @@ public class NPC : Interactable {
 
         weapon.gameObject.SetActive(false);
 
-        balais = GetComponentInChildren<NPCBalais>().gameObject;
+        if(GetComponentInChildren<NPCBalais>() != null) balais = GetComponentInChildren<NPCBalais>().gameObject;
     }
 
     void Update() {

@@ -4,6 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 1c6aa6610ca1fe74a97672e2fb596700
+  - enabled: 1
+    path: Assets/Scenes/Brukas.unity
+    guid: 58b50f09de3965a4fac906b02109d88a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 34622bfccfc17f44593c9894333ae17d, type: 2}

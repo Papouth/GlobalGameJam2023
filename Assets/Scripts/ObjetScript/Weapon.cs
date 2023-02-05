@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Weapon : MonoBehaviour
+public class Weapon : Interactable
 {
     #region Variables
     [Header("Munitions")]
@@ -37,9 +37,10 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform bulletCasingPos;
 
     [Header("Component")]
-    [SerializeField] private PlayerInput playerInput;
+    private PlayerInput playerInput;
     private CharacterController cc;
     private Animator animPlayer;
+    private Player player;
     #endregion
 
 
@@ -47,7 +48,7 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         cc = GetComponentInParent<CharacterController>();
-        playerInput = GetComponentInParent<PlayerInput>();
+        player = FindObjectOfType<Player>();
 
         recoilLimitTimer = fireRate / 5f;
 
@@ -66,6 +67,20 @@ public class Weapon : MonoBehaviour
 
 
     #region Functions
+    public override void Interact()
+    {
+        // On met l'objet dans la main du joueur et on disable le collider
+        playerInput = player.GetComponent<PlayerInput>();
+
+        if (player.weaponInHand.transform.childCount == 0)
+        {
+            transform.SetParent(player.weaponInHand.transform, true);
+            transform.position = Vector3.forward;
+            transform.rotation = Quaternion.identity;
+        }
+
+    }
+
     private void Shoot()
     {
         if (playerInput.CanShoot && ammoCount > 0)

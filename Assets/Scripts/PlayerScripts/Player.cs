@@ -11,8 +11,9 @@ public class Player : MonoBehaviour
     [Header("Player Inventory")]
     private Vector3 mouseWheelInput;
     public GameObject[] inventory = new GameObject[3];
-    [SerializeField] private GameObject weaponInHand;
+    public GameObject weaponInHand;
     [SerializeField] private int actualNumber;
+    public bool haveWeapon;
 
     public int vignes = 0;
 
@@ -21,6 +22,8 @@ public class Player : MonoBehaviour
     private Weapon weapon;
     private PlayerInput playerInput;
     #endregion
+
+
 
     #region Built In Methods
     private void Start()
@@ -33,7 +36,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (weapon != null) WeaponCheckStatut();
+        WeaponCheckStatut();
 
         ShootStatut();
 

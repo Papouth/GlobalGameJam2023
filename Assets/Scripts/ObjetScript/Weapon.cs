@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class Weapon : MonoBehaviour
+public class Weapon : Interactable
 {
     #region Variables
     [Header("Munitions")]
@@ -35,19 +34,26 @@ public class Weapon : MonoBehaviour
     [SerializeField] private AudioSource shotSound;
     [SerializeField] private GameObject bulletCasing;
     [SerializeField] private Transform bulletCasingPos;
+    public int hand;
+    public bool blockInteract;
 
     [Header("Component")]
-    [SerializeField] private PlayerInput playerInput;
+    public Collider colWeapon;
+    public PlayerInput playerInput;
     private CharacterController cc;
     private Animator animPlayer;
+    private Player player;
+    public Rigidbody rbGun;
     #endregion
 
 
     #region Built In Methods
     private void Start()
     {
-        cc = GetComponentInParent<CharacterController>();
-        playerInput = GetComponentInParent<PlayerInput>();
+        cc = FindObjectOfType<CharacterController>();
+        player = FindObjectOfType<Player>();
+        colWeapon = GetComponent<Collider>(); 
+        rbGun = GetComponent<Rigidbody>();   
 
         recoilLimitTimer = fireRate / 5f;
 
@@ -66,40 +72,111 @@ public class Weapon : MonoBehaviour
 
 
     #region Functions
-    private void Shoot()
+    public override void Interact()
     {
-        if (playerInput.CanShoot && ammoCount > 0)
+        // On met l'objet dans la main du joueur et ON DISABLE LE COLLIDER DE L ARME
+
+        if (!blockInteract)
         {
-            if (!singleShot)
+            // On sélectionne le slot d'arme actuellement en main
+            if (player.weaponInHand.transform.childCount == 0)
             {
-                Instantiate(bulletPrefab, transform.position, transform.rotation);
+                GunBlockPos();
 
-                WeaponRecoil();
-                PlayerRecoil();
+                // On modifie le parent de mon arme
+                transform.SetParent(player.weaponInHand.transform, true);
 
-                ammoCount--;
-
-                singleShot = true;
+                GunChangePos();
             }
-
-            time += Time.deltaTime;
-
-            if (time > fireRate)
+            else
             {
-                Instantiate(bulletPrefab, transform.position, transform.rotation);
+                for (hand = 0; hand < player.inventory.Length; hand++)
+                {
+                    if (player.inventory[hand].transform.childCount == 0)
+                    {
+                        GunBlockPos();
 
-                WeaponRecoil();
-                PlayerRecoil();
+                        // On modifie le parent de mon arme
+                        transform.SetParent(player.inventory[hand].transform, true);
 
-                ammoCount--;
+                        GunChangePos();
 
-                time = 0f;
+                        return;
+                    }
+                }
+
+                // On prend alors l'arme en main que l'on retire et on la remplace par celle ci
+                if (hand == player.inventory.Length)
+                {
+                    // On retire l'autre arme de son parent
+                    player.weaponInHand.GetComponentInChildren<Weapon>().rbGun.isKinematic = false;
+                    player.weaponInHand.GetComponentInChildren<Weapon>().transform.SetParent(player.weaponInHand.transform, false);
+
+                    GunBlockPos();
+
+                    // On modifie le parent de mon arme
+                    transform.SetParent(player.weaponInHand.transform, true);
+
+                    GunChangePos();
+                }
             }
         }
-        else if (!playerInput.CanShoot)
+    }
+
+    private void GunBlockPos()
+    {
+        blockInteract = false;
+
+        rbGun.isKinematic = true;
+    }
+
+    private void GunChangePos()
+    {
+        // On modifie sa position et sa rotation
+        transform.localPosition = Vector3.forward;
+        transform.localRotation = Quaternion.identity;
+
+        // On récupère le playerInput
+        playerInput = player.GetComponentInParent<PlayerInput>();
+    }
+
+    private void Shoot()
+    {
+        if (playerInput != null)
         {
-            singleShot = false;
-            time = 0f;
+            if (playerInput.CanShoot && ammoCount > 0)
+            {
+                if (!singleShot)
+                {
+                    Instantiate(bulletPrefab, transform.position, transform.rotation);
+
+                    WeaponRecoil();
+                    PlayerRecoil();
+
+                    ammoCount--;
+
+                    singleShot = true;
+                }
+
+                time += Time.deltaTime;
+
+                if (time > fireRate)
+                {
+                    Instantiate(bulletPrefab, transform.position, transform.rotation);
+
+                    WeaponRecoil();
+                    PlayerRecoil();
+
+                    ammoCount--;
+
+                    time = 0f;
+                }
+            }
+            else if (!playerInput.CanShoot)
+            {
+                singleShot = false;
+                time = 0f;
+            }
         }
     }
 
@@ -131,7 +208,7 @@ public class Weapon : MonoBehaviour
 
     private void WeaponRecoil()
     {
-        transform.localRotation = Quaternion.Euler(Random.Range(2f, 15f), 0f, 0f);
+        transform.localRotation = Quaternion.Euler(-Random.Range(2f, 15f), 0f, 0f);
 
         recoilWeapon = true;
     }

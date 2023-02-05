@@ -1,6 +1,5 @@
-using System;
-using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnnemyAttack : MonoBehaviour
 {
@@ -17,7 +16,7 @@ public class EnnemyAttack : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Arbre"))
+        if (other.CompareTag("Player") || other.CompareTag("Arbre") || other.CompareTag("Mur"))
         {
             attackTime += Time.deltaTime;
             if (attackTime > attackCooldown)
@@ -37,11 +36,29 @@ public class EnnemyAttack : MonoBehaviour
                         Debug.Log("Arbre life: " + other.GetComponent<Arbre>().arbreLife);
                         break;
                     }
+
+                    case "Mur": {
+                        other.GetComponent<Wall>().wallInteract.wallLife -= ennemyDamage;
+
+                        ennemy.lastAttackedWall = other.GetComponent<Wall>().wallInteract;
+
+                        ennemy.agent.destination = transform.position;
+                        break;
+                    }
                 }
 
                 Debug.Log("Attacked something");
                 attackTime = 0;
             }
         }
+    }
+
+    private Vector3 getClosestPosition(Vector3 destination) {
+        NavMeshHit myNavHit;
+        if(NavMesh.SamplePosition(destination, out myNavHit, 100, -1)) {
+            return myNavHit.position;
+        }
+
+        return destination;
     }
 }

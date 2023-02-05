@@ -19,8 +19,6 @@ public class InteractAmmoBox : Interactable
     private void Update()
     {
         AddAmmo();
-
-        Debug.Log(playerMovement.inAmmoBox);
     }
 
     private void AddAmmo()

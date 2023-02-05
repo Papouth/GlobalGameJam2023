@@ -19,12 +19,11 @@ public class EnnemyLook : MonoBehaviour
 
     void Update() {
         if(target != default(Vector3)){
-            rotateTowards(ennemy.agent.destination);
+            transform.LookAt(target);
         }
     }
 
     void rotateTowards(Vector3 destination) {
-        Debug.Log("rotation");
         //find the vector pointing from our position to the target
         _direction = (ennemy.agent.destination - transform.position).normalized;
 

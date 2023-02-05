@@ -57,7 +57,9 @@ MonoBehaviour:
   fireRate: 0.16
   recoilGunAmount: 1
   valueRecoilPlayer: 0.3
-  shotSound: {fileID: 8300000, guid: 4ea7a10c04fa38944bebd9bc1d856ffc, type: 3}
+  shotSound: {fileID: 0}
+  bulletCasing: {fileID: 0}
+  bulletCasingPos: {fileID: 0}
   hand: 0
   blockInteract: 0
   colWeapon: {fileID: 0}
@@ -104,7 +106,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

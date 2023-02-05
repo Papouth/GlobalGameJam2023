@@ -10,15 +10,27 @@ public class Ennemy : MonoBehaviour
 
     public NavMeshAgent agent;
 
+    public Animator animator;
+
     public bool isAttackingTree = false;
 
     public InteractWall lastAttackedWall = null; //sert à savoir si on a besoin de se déplacer
 
+    public EnnemyLook ennemyLook;
+
     private void Start() {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        ennemyLook = GetComponent<EnnemyLook>();
     }
 
     private void Update() {
+        if(agent.destination != default(Vector3)) {
+            animator.SetFloat("EnemyMove", 0.5f);
+        } else {
+            animator.SetFloat("EnemyMove", 0.0f);
+        }
+
         if(lastAttackedWall != null) {
             if(lastAttackedWall.wallLife <= 0) {
                 lastAttackedWall = null;

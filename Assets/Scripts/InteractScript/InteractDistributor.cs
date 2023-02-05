@@ -9,6 +9,7 @@ public class InteractDistributor : Interactable
     [SerializeField] private GameObject[] rareWeapon;
     [SerializeField] private GameObject[] epicWeapon;
     private int weaponRarityNumber;
+    private GameObject weaponToInstantiate;
     private Player player;
 
 
@@ -37,17 +38,20 @@ public class InteractDistributor : Interactable
         if (weaponRarityNumber >= 0 && weaponRarityNumber <= 12)
         {
             // Common Weapon
-            Instantiate(commonWeapon[Random.Range(0, commonWeapon.Length)]);
+            weaponToInstantiate = commonWeapon[Random.Range(0, commonWeapon.Length)];
+            Instantiate(weaponToInstantiate, transform.position, transform.rotation); // Quaternion.identity
         }
         else if (weaponRarityNumber > 12 && weaponRarityNumber <= 17)
         {
             // Rare Weapon
-            Instantiate(rareWeapon[Random.Range(0, rareWeapon.Length)]);
+            weaponToInstantiate = rareWeapon[Random.Range(0, rareWeapon.Length)];
+            Instantiate(weaponToInstantiate, transform.position, transform.rotation);
         }
         else if (weaponRarityNumber > 17)
         {
             // Epic Weapon
-            Instantiate(epicWeapon[Random.Range(0, epicWeapon.Length)]);
+            weaponToInstantiate = epicWeapon[Random.Range(0, epicWeapon.Length)];
+            Instantiate(weaponToInstantiate, transform.position, transform.rotation);
         }
 
         player.vignes--;

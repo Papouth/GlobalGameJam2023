@@ -1283,7 +1283,7 @@ MonoBehaviour:
   - {fileID: 1335125114699072442}
   weaponInHand: {fileID: 0}
   actualNumber: 0
-  vignes: 0
+  vignes: 10
   playerAnimator: {fileID: 0}
 --- !u!1 &1335125115001626738
 GameObject:

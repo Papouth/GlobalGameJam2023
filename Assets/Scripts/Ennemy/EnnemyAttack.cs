@@ -40,7 +40,7 @@ public class EnnemyAttack : MonoBehaviour
                     case "Player": {
                         if(!ennemy.isAttackingTree) other.GetComponent<Player>().playerLife -= ennemyDamage;
 
-                        Debug.Log("Player life: " + other.GetComponent<Player>().playerLife);
+                        //Debug.Log("Player life: " + other.GetComponent<Player>().playerLife);
                         break;
                     }
 
@@ -48,7 +48,7 @@ public class EnnemyAttack : MonoBehaviour
                         other.GetComponent<Arbre>().arbreLife -= ennemyDamage;
                         ennemy.isAttackingTree = true;
 
-                        Debug.Log("Arbre life: " + other.GetComponent<Arbre>().arbreLife);
+                        //Debug.Log("Arbre life: " + other.GetComponent<Arbre>().arbreLife);
                         break;
                     }
                 }
@@ -61,7 +61,7 @@ public class EnnemyAttack : MonoBehaviour
 
             canAttack = false;
 
-                Debug.Log("Attacked something");
+                //Debug.Log("Attacked something");
                 attackTime = 0;
         }
     }

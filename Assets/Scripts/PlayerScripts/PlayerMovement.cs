@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Vector3 targetPos;
     [HideInInspector] public bool inAmmoBox;
+    [HideInInspector] public bool dead;
 
     [Header("Player Component")]
     private PlayerInput playerInput;
@@ -36,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         MouseAim();
 
-        if (!inAmmoBox) Locomotion();
+        if (!inAmmoBox || !dead) Locomotion();
     }
     #endregion
 

@@ -62,7 +62,7 @@ public class InteractDistributor : Interactable
         {
             spawnParent = player.weaponInHand.transform;
         }
-        else
+        else if (player.weaponInHand.transform.childCount != 0)
         {
             for (incrementation = 0; incrementation < player.inventory.Length; incrementation++)
             {
@@ -77,9 +77,7 @@ public class InteractDistributor : Interactable
             // On prend alors l'arme en main que l'on retire et on la remplace par celle ci
             if (incrementation == player.inventory.Length)
             {
-                // On retire l'autre arme de son parent
-                player.weaponInHand.GetComponentInChildren<Weapon>().rbGun.isKinematic = false;
-                player.weaponInHand.GetComponentInChildren<Weapon>().transform.SetParent(player.weaponInHand.transform, false);
+                Destroy(player.weaponInHand.gameObject);
 
                 spawnParent = player.weaponInHand.transform;
             }
@@ -88,23 +86,23 @@ public class InteractDistributor : Interactable
 
     private void RandomWeapon()
     {
-        weaponRarityNumber = Random.Range(0, 20);
+        weaponRarityNumber = Random.Range(0, 10);
 
-        if (weaponRarityNumber >= 0 && weaponRarityNumber <= 12)
+        if (weaponRarityNumber >= 0 && weaponRarityNumber <= 4)
         {
             // Common Weapon
             weaponToInstantiate = commonWeapon[Random.Range(0, commonWeapon.Length)];
 
             WeaponSpawnRoutine();
         }
-        else if (weaponRarityNumber > 12 && weaponRarityNumber <= 17)
+        else if (weaponRarityNumber > 4 && weaponRarityNumber <= 7)
         {
             // Rare Weapon
             weaponToInstantiate = rareWeapon[Random.Range(0, rareWeapon.Length)];
 
             WeaponSpawnRoutine();
         }
-        else if (weaponRarityNumber > 17)
+        else if (weaponRarityNumber > 7)
         {
             // Epic Weapon
             weaponToInstantiate = epicWeapon[Random.Range(0, epicWeapon.Length)];

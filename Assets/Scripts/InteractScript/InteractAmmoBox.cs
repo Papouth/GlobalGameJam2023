@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class InteractAmmoBox : Interactable
 {
@@ -34,9 +35,12 @@ public class InteractAmmoBox : Interactable
             {
                 for (int i = 0; i < player.inventory.Length; i++)
                 {
-                    weapon = player.GetComponentInChildren<Weapon>();
+                    if (player.inventory[i].transform.childCount != 0)
+                    {
+                        weapon = player.GetComponentInChildren<Weapon>();
 
-                    weapon.magazineCount = weapon.magazineCountBase;
+                        weapon.magazineCount = weapon.magazineCountBase;
+                    }
                 }
 
                 // Reset trigger anim interact

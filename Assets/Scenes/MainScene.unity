@@ -526,54 +526,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4316699359194512386, guid: 6cfd403d6ac4d244795132d54ef71893, type: 3}
-      propertyPath: epicWeapon.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4316699359194512386, guid: 6cfd403d6ac4d244795132d54ef71893, type: 3}
-      propertyPath: rareWeapon.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4316699359194512386, guid: 6cfd403d6ac4d244795132d54ef71893, type: 3}
-      propertyPath: commonWeapon.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4316699359194512386, guid: 6cfd403d6ac4d244795132d54ef71893, type: 3}
-      propertyPath: epicWeapon.Array.data[0]
-      value: 
-      objectReference: {fileID: 539408727740963154, guid: e287788026e22a349a8ca21ae79d50f6, type: 3}
-    - target: {fileID: 4316699359194512386, guid: 6cfd403d6ac4d244795132d54ef71893, type: 3}
-      propertyPath: epicWeapon.Array.data[1]
-      value: 
-      objectReference: {fileID: 539408727740963154, guid: e287788026e22a349a8ca21ae79d50f6, type: 3}
-    - target: {fileID: 4316699359194512386, guid: 6cfd403d6ac4d244795132d54ef71893, type: 3}
-      propertyPath: rareWeapon.Array.data[0]
-      value: 
-      objectReference: {fileID: 94823072519467530, guid: e8c6965f1da2b44458275acf91b4290c, type: 3}
-    - target: {fileID: 4316699359194512386, guid: 6cfd403d6ac4d244795132d54ef71893, type: 3}
-      propertyPath: rareWeapon.Array.data[1]
-      value: 
-      objectReference: {fileID: 94823072519467530, guid: e8c6965f1da2b44458275acf91b4290c, type: 3}
-    - target: {fileID: 4316699359194512386, guid: 6cfd403d6ac4d244795132d54ef71893, type: 3}
-      propertyPath: rareWeapon.Array.data[2]
-      value: 
-      objectReference: {fileID: 94823072519467530, guid: e8c6965f1da2b44458275acf91b4290c, type: 3}
-    - target: {fileID: 4316699359194512386, guid: 6cfd403d6ac4d244795132d54ef71893, type: 3}
-      propertyPath: commonWeapon.Array.data[0]
-      value: 
-      objectReference: {fileID: 6366989338085140964, guid: afd3f62cf8db1c84fa581d7c94e9b6c3, type: 3}
-    - target: {fileID: 4316699359194512386, guid: 6cfd403d6ac4d244795132d54ef71893, type: 3}
-      propertyPath: commonWeapon.Array.data[1]
-      value: 
-      objectReference: {fileID: 6366989338085140964, guid: afd3f62cf8db1c84fa581d7c94e9b6c3, type: 3}
-    - target: {fileID: 4316699359194512386, guid: 6cfd403d6ac4d244795132d54ef71893, type: 3}
-      propertyPath: commonWeapon.Array.data[2]
-      value: 
-      objectReference: {fileID: 6366989338085140964, guid: afd3f62cf8db1c84fa581d7c94e9b6c3, type: 3}
-    - target: {fileID: 4316699359194512386, guid: 6cfd403d6ac4d244795132d54ef71893, type: 3}
-      propertyPath: commonWeapon.Array.data[3]
-      value: 
-      objectReference: {fileID: 6366989338085140964, guid: afd3f62cf8db1c84fa581d7c94e9b6c3, type: 3}
     - target: {fileID: 4316699359194512387, guid: 6cfd403d6ac4d244795132d54ef71893, type: 3}
       propertyPath: m_RootOrder
       value: 5

@@ -53,12 +53,9 @@ public class Player : MonoBehaviour
     {
         for (int i = 0; i < inventory.Length; i++)
         {
-            if (inventory[i].transform.childCount != 0) 
-            {
-                weapon = inventory[i].GetComponentInChildren<Weapon>();
+            //weapon = inventory[i].GetComponentInChildren<Weapon>();
 
-                inventory[i].gameObject.SetActive(false);
-            }
+            inventory[i].gameObject.SetActive(false);
         }
 
         weaponInHand = inventory[0];
@@ -72,7 +69,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private void WeaponCheckStatut()
     {
-        if (weaponInHand.transform.childCount != 0) 
+        if (weaponInHand.transform.childCount != 0)
         {
             weapon = weaponInHand.GetComponentInChildren<Weapon>();
 

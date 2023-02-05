@@ -111,15 +111,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commonWeapon:
-  - {fileID: 6366989338085140964, guid: afd3f62cf8db1c84fa581d7c94e9b6c3, type: 3}
-  - {fileID: 6366989338085140964, guid: afd3f62cf8db1c84fa581d7c94e9b6c3, type: 3}
-  - {fileID: 6366989338085140964, guid: afd3f62cf8db1c84fa581d7c94e9b6c3, type: 3}
-  - {fileID: 6366989338085140964, guid: afd3f62cf8db1c84fa581d7c94e9b6c3, type: 3}
+  - {fileID: 539408727740963154, guid: e287788026e22a349a8ca21ae79d50f6, type: 3}
   rareWeapon:
-  - {fileID: 94823072519467530, guid: e8c6965f1da2b44458275acf91b4290c, type: 3}
-  - {fileID: 94823072519467530, guid: e8c6965f1da2b44458275acf91b4290c, type: 3}
-  - {fileID: 94823072519467530, guid: e8c6965f1da2b44458275acf91b4290c, type: 3}
+  - {fileID: 6366989338085140964, guid: afd3f62cf8db1c84fa581d7c94e9b6c3, type: 3}
   epicWeapon:
-  - {fileID: 539408727740963154, guid: e287788026e22a349a8ca21ae79d50f6, type: 3}
-  - {fileID: 539408727740963154, guid: e287788026e22a349a8ca21ae79d50f6, type: 3}
+  - {fileID: 94823072519467530, guid: e8c6965f1da2b44458275acf91b4290c, type: 3}
   interactTimer: 2

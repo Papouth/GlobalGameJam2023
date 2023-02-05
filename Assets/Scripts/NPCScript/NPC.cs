@@ -28,9 +28,9 @@ public class NPC : Interactable {
 
         animator = GetComponent<Animator>();
 
-        balais = GetComponentInChildren<NPCBalais>().gameObject;
-
         weapon.gameObject.SetActive(false);
+
+        balais = GetComponentInChildren<NPCBalais>().gameObject;
     }
 
     void Update() {
@@ -81,7 +81,7 @@ public class NPC : Interactable {
 
             weapon.gameObject.SetActive(true);
 
-            balais.SetActive(false);
+            if(balais != null) balais.SetActive(false);
 
             animator.SetFloat("NPCMove", 0.0f);
             animator.SetTrigger("TriggerTurret");

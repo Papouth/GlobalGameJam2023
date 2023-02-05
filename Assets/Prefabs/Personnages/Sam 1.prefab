@@ -1157,6 +1157,7 @@ MonoBehaviour:
     m_Bits: 8
   targetPos: {x: 0, y: 0, z: 0}
   inAmmoBox: 0
+  dead: 0
   cam: {fileID: 0}
 --- !u!114 &1335125115351358009
 MonoBehaviour:
@@ -1194,6 +1195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLife: 100
+  timeBeforeSpawn: 3
   inventory:
   - {fileID: 1335125114288322336}
   - {fileID: 1335125115068562073}

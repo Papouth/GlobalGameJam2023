@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Weapon : Interactable
 {
@@ -31,9 +32,7 @@ public class Weapon : Interactable
     private float reloadTime = 3.2f;
     private float timerToReload = 0f;
 
-    [SerializeField] private AudioSource shotSound;
-    [SerializeField] private GameObject bulletCasing;
-    [SerializeField] private Transform bulletCasingPos;
+    [SerializeField] private AudioClip shotSound;
     public int hand;
     public bool blockInteract;
 
@@ -44,6 +43,7 @@ public class Weapon : Interactable
     private Animator animPlayer;
     private Player player;
     public Rigidbody rbGun;
+    private AudioSource audioSource;
     #endregion
 
 
@@ -53,7 +53,8 @@ public class Weapon : Interactable
         cc = FindObjectOfType<CharacterController>();
         player = FindObjectOfType<Player>();
         colWeapon = GetComponent<Collider>();
-        rbGun = GetComponent<Rigidbody>();   
+        rbGun = GetComponent<Rigidbody>();
+        audioSource= GetComponent<AudioSource>();   
 
         recoilLimitTimer = fireRate / 5f;
 
@@ -74,69 +75,7 @@ public class Weapon : Interactable
     #region Functions
     public override void Interact()
     {
-        /*
-        if (!blockInteract)
-        {
-            // On sélectionne le slot d'arme actuellement en main
-            if (player.weaponInHand.transform.childCount == 0)
-            {
-                GunBlockPos();
 
-                // On modifie le parent de mon arme
-                transform.SetParent(player.weaponInHand.transform, true);
-
-                GunChangePos();
-            }
-            else
-            {
-                for (hand = 0; hand < player.inventory.Length; hand++)
-                {
-                    if (player.inventory[hand].transform.childCount == 0)
-                    {
-                        GunBlockPos();
-
-                        // On modifie le parent de mon arme
-                        transform.SetParent(player.inventory[hand].transform, true);
-
-                        GunChangePos();
-
-                        return;
-                    }
-                }
-
-                // On prend alors l'arme en main que l'on retire et on la remplace par celle ci
-                if (hand == player.inventory.Length)
-                {
-                    // On retire l'autre arme de son parent
-                    player.weaponInHand.GetComponentInChildren<Weapon>().rbGun.isKinematic = false;
-                    player.weaponInHand.GetComponentInChildren<Weapon>().transform.SetParent(player.weaponInHand.transform, false);
-
-                    GunBlockPos();
-
-                    // On modifie le parent de mon arme
-                    transform.SetParent(player.weaponInHand.transform, true);
-
-                    GunChangePos();
-                }
-            }
-        }*/
-    }
-
-    private void GunBlockPos()
-    {
-        blockInteract = false;
-
-        rbGun.isKinematic = true;
-    }
-
-    private void GunChangePos()
-    {
-        // On modifie sa position et sa rotation
-        transform.localPosition = Vector3.forward;
-        transform.localRotation = Quaternion.identity;
-
-        // On récupère le playerInput
-        playerInput = player.GetComponentInParent<PlayerInput>();
     }
 
     private void Shoot()
@@ -152,6 +91,9 @@ public class Weapon : Interactable
                     WeaponRecoil();
                     PlayerRecoil();
 
+                    // Son
+                    audioSource.PlayOneShot(shotSound);
+
                     ammoCount--;
 
                     singleShot = true;
@@ -165,6 +107,9 @@ public class Weapon : Interactable
 
                     WeaponRecoil();
                     PlayerRecoil();
+
+                    // Son
+                    audioSource.PlayOneShot(shotSound);
 
                     ammoCount--;
 

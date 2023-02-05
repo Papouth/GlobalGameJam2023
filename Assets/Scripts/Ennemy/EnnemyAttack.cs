@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnnemyAttack : MonoBehaviour
@@ -17,15 +18,21 @@ public class EnnemyAttack : MonoBehaviour
         ennemy = GetComponentInParent<Ennemy>();
     }
 
+    private void onTriggerEnter(Collider other) {
+        if(!attacked) Attack(other);
+    }
+
     private void OnTriggerStay(Collider other)
     {
+        Attack(other);
+    }
+
+    private void Attack(Collider other) {
         if(attacked) ennemy.animator.ResetTrigger("TriggerAttack");
 
-        if (other.CompareTag("Player") || other.CompareTag("Arbre") || other.CompareTag("Mur"))
-        {
+        if(other.CompareTag("Player") || other.CompareTag("Arbre") || other.CompareTag("Mur")) {
             attackTime += Time.deltaTime;
-            if (attackTime > attackCooldown)
-            {
+            if(attackTime > attackCooldown) {
                 switch(other.tag.ToString()) {
                     case "Player": {
                         if(!ennemy.isAttackingTree) other.GetComponent<Player>().playerLife -= ennemyDamage;
@@ -46,9 +53,16 @@ public class EnnemyAttack : MonoBehaviour
                 ennemy.ennemyLook.target = other.transform.position;
                 ennemy.animator.SetTrigger("TriggerAttack");
 
+                StartCoroutine(resetTrigger());
+
                 Debug.Log("Attacked something");
                 attackTime = 0;
             }
         }
+    }
+
+    private IEnumerator resetTrigger() {
+        yield return new WaitForSeconds(1f);
+        ennemy.animator.ResetTrigger("TriggerAttack");
     }
 }

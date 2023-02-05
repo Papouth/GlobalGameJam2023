@@ -11,7 +11,9 @@ public class WaveSystem : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 5;
     [SerializeField] private float spawnDelay = 3;
 
-    [SerializeField] private int specialsPerWave = 2;
+    [SerializeField] private int baseSpecialPerWave = 1 ;
+    [SerializeField] private int specialsPerWave    = 1 ;
+    [SerializeField] private int specialsStartWave  = 2 ;
 
     [SerializeField] private GameObject[] spawners;
     [SerializeField] private GameObject enemy;
@@ -65,16 +67,15 @@ public class WaveSystem : MonoBehaviour
     #region START/END WAVE
 
     private void startWave() {
-
         currentWave++;
 
         needSpawn = baseMonsters + (eachWave * currentWave);
-        
-        if(currentWave > 2) {
-            neededSpecials = specialsPerWave * currentWave;
+
+        if(currentWave >= specialsStartWave) {
+            neededSpecials = baseSpecialPerWave + (specialsPerWave * currentWave);
         }
 
-        //Debug.Log("Spawning wave #" + currentWave + " with " + needSpawn + " mobs");
+        Debug.Log("Spawning wave #" + currentWave + " with " + needSpawn + " mobs");
 
         inWave = true;
     }
@@ -82,7 +83,7 @@ public class WaveSystem : MonoBehaviour
     private void endWave() {
         inWave = false;
 
-        //Debug.Log("Fin de la vague");
+        Debug.Log("Fin de la vague");
 
         StartCoroutine(StartCooldown());
     }

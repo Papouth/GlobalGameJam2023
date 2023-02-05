@@ -24,8 +24,7 @@ public class EnnemyFollowPlayer : MonoBehaviour {
 
     void Update() 
     {
-        if(player.GetComponent<Player>().playerLife <= 0 || ennemy.lastAttackedWall != null) return;
-        if(ennemy.lastAttackedWall != null) return;
+        if(player.GetComponent<Player>().playerLife <= 0) return;
 
         if(Vector3.Distance(transform.position, lastPosition) < procheDuJoueur) {
             agent.SetDestination(player.transform.position);

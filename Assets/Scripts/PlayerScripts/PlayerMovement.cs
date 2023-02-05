@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector3 targetPos;
     [HideInInspector] public bool inAmmoBox;
 
-
     [Header("Player Component")]
     private PlayerInput playerInput;
     [SerializeField] private Camera cam;

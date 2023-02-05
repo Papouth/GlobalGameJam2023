@@ -1,5 +1,5 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnnemyAttack : MonoBehaviour
 {
@@ -10,17 +10,29 @@ public class EnnemyAttack : MonoBehaviour
 
     private Ennemy ennemy;
 
+    private EnnemyLook ennemyLook;
+
+    private bool attacked = false;
+
     private void Start() {
         ennemy = GetComponentInParent<Ennemy>();
     }
 
+    private void onTriggerEnter(Collider other) {
+        if(!attacked) Attack(other);
+    }
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Arbre") || other.CompareTag("Mur"))
-        {
+        Attack(other);
+    }
+
+    private void Attack(Collider other) {
+        if(attacked) ennemy.animator.ResetTrigger("TriggerAttack");
+
+        if(other.CompareTag("Player") || other.CompareTag("Arbre") || other.CompareTag("Mur")) {
             attackTime += Time.deltaTime;
-            if (attackTime > attackCooldown)
-            {
+            if(attackTime > attackCooldown) {
                 switch(other.tag.ToString()) {
                     case "Player": {
                         if(!ennemy.isAttackingTree) other.GetComponent<Player>().playerLife -= ennemyDamage;
@@ -36,16 +48,12 @@ public class EnnemyAttack : MonoBehaviour
                         Debug.Log("Arbre life: " + other.GetComponent<Arbre>().arbreLife);
                         break;
                     }
-
-                    case "Mur": {
-                        other.GetComponent<Wall>().wallInteract.wallLife -= ennemyDamage;
-
-                        ennemy.lastAttackedWall = other.GetComponent<Wall>().wallInteract;
-
-                        ennemy.agent.destination = transform.position;
-                        break;
-                    }
                 }
+
+                ennemy.ennemyLook.target = other.transform.position;
+                ennemy.animator.SetTrigger("TriggerAttack");
+
+                StartCoroutine(resetTrigger());
 
                 Debug.Log("Attacked something");
                 attackTime = 0;
@@ -53,12 +61,8 @@ public class EnnemyAttack : MonoBehaviour
         }
     }
 
-    private Vector3 getClosestPosition(Vector3 destination) {
-        NavMeshHit myNavHit;
-        if(NavMesh.SamplePosition(destination, out myNavHit, 100, -1)) {
-            return myNavHit.position;
-        }
-
-        return destination;
+    private IEnumerator resetTrigger() {
+        yield return new WaitForSeconds(1f);
+        ennemy.animator.ResetTrigger("TriggerAttack");
     }
 }

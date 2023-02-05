@@ -6,6 +6,8 @@ public class EnnemyMoveTowardsTree : MonoBehaviour
     private Ennemy ennemy;
     private Player player;
 
+    private EnnemyLook ennemyLook;
+
     private Arbre arbre;
     private Vector3 destination;
 
@@ -16,6 +18,7 @@ public class EnnemyMoveTowardsTree : MonoBehaviour
     {
         ennemy = GetComponent<Ennemy>();
         agent = GetComponent<NavMeshAgent>();
+        ennemyLook = GetComponent<EnnemyLook>();
 
         player = FindObjectOfType<Player>();
         arbre = FindObjectOfType<Arbre>();
@@ -30,6 +33,8 @@ public class EnnemyMoveTowardsTree : MonoBehaviour
             Debug.Log("Trying to move towards the tree");
             destination = getClosestPosition(arbre.transform.position);
             agent.destination = destination;
+
+            ennemyLook.target = destination;
         }
     }
 

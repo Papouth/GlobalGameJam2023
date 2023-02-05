@@ -319,7 +319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1753030475
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -511,6 +511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PNJChien3
       objectReference: {fileID: 0}
+    - target: {fileID: 800623430141750063, guid: 17fbcb8b0cb28ff468ef4a6aa5d79d6d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17fbcb8b0cb28ff468ef4a6aa5d79d6d, type: 3}
 --- !u!1001 &929723060667142715
@@ -568,6 +572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PNJFennec2
       objectReference: {fileID: 0}
+    - target: {fileID: 929723061439741107, guid: 4a578633f65a8204e82e838efb00c481, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a578633f65a8204e82e838efb00c481, type: 3}
 --- !u!1001 &1442112191618298007
@@ -580,6 +588,10 @@ PrefabInstance:
     - target: {fileID: 1442112192466141136, guid: 0ebc6e590351f1141a12905f310e3761, type: 3}
       propertyPath: m_Name
       value: PNJFennec1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442112192466141136, guid: 0ebc6e590351f1141a12905f310e3761, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1442112192466141150, guid: 0ebc6e590351f1141a12905f310e3761, type: 3}
       propertyPath: m_RootOrder
@@ -637,6 +649,10 @@ PrefabInstance:
     - target: {fileID: 2938844889243699965, guid: d589ad59df55b6b43bf885e28b08f157, type: 3}
       propertyPath: m_Name
       value: PNJChat2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2938844889243699965, guid: d589ad59df55b6b43bf885e28b08f157, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2938844889243699967, guid: d589ad59df55b6b43bf885e28b08f157, type: 3}
       propertyPath: m_RootOrder
@@ -739,6 +755,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PNJChat3
       objectReference: {fileID: 0}
+    - target: {fileID: 3491436067685387502, guid: 0db2088894148e346b7c43bc8f473a76, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0db2088894148e346b7c43bc8f473a76, type: 3}
 --- !u!1001 &3664479551472120824
@@ -751,6 +771,10 @@ PrefabInstance:
     - target: {fileID: 3664479551152606253, guid: 04d48e63a1b48f74d9075bb6fe2b484f, type: 3}
       propertyPath: m_Name
       value: PNJFennec3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664479551152606253, guid: 04d48e63a1b48f74d9075bb6fe2b484f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3664479551152606255, guid: 04d48e63a1b48f74d9075bb6fe2b484f, type: 3}
       propertyPath: m_RootOrder
@@ -853,6 +877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PNJChien1
       objectReference: {fileID: 0}
+    - target: {fileID: 4884239606034204378, guid: 45341ca55b6ec7642b16a371b077fdda, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45341ca55b6ec7642b16a371b077fdda, type: 3}
 --- !u!1001 &5546954074710438010
@@ -909,6 +937,10 @@ PrefabInstance:
     - target: {fileID: 4568568599524758196, guid: b2cf7bd254b9ffa4bb16598736a34080, type: 3}
       propertyPath: m_Name
       value: MonstreV1_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568568599524758196, guid: b2cf7bd254b9ffa4bb16598736a34080, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2cf7bd254b9ffa4bb16598736a34080, type: 3}
@@ -1024,6 +1056,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MonstreV2
       objectReference: {fileID: 0}
+    - target: {fileID: 5329032979514316452, guid: e0f8d7d4507fa1c438c50d1ca91e5bff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f8d7d4507fa1c438c50d1ca91e5bff, type: 3}
 --- !u!1001 &6434062758402266832
@@ -1036,6 +1072,10 @@ PrefabInstance:
     - target: {fileID: 6434062757438011333, guid: 63cc2a9a0e8f4fa4682ae6f433593d68, type: 3}
       propertyPath: m_Name
       value: MonstreV1_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434062757438011333, guid: 63cc2a9a0e8f4fa4682ae6f433593d68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6434062757438011334, guid: 63cc2a9a0e8f4fa4682ae6f433593d68, type: 3}
       propertyPath: m_RootOrder
@@ -1093,6 +1133,10 @@ PrefabInstance:
     - target: {fileID: 7054192823717709451, guid: 5175d110863468d4a9109cc25ef8098e, type: 3}
       propertyPath: m_Name
       value: PNJChat1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054192823717709451, guid: 5175d110863468d4a9109cc25ef8098e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7687176528458521649, guid: 5175d110863468d4a9109cc25ef8098e, type: 3}
       propertyPath: m_RootOrder
@@ -1212,7 +1256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &8442080959207402459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1267,6 +1311,10 @@ PrefabInstance:
     - target: {fileID: 8442080960181098798, guid: 68e6ca36eed3af743b0a618e88a4d6ba, type: 3}
       propertyPath: m_Name
       value: PNJChien2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8442080960181098798, guid: 68e6ca36eed3af743b0a618e88a4d6ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68e6ca36eed3af743b0a618e88a4d6ba, type: 3}

@@ -53,7 +53,7 @@ public class Weapon : Interactable
         cc = FindObjectOfType<CharacterController>();
         player = FindObjectOfType<Player>();
         colWeapon = GetComponent<Collider>();
-        rbGun = GetComponent<Rigidbody>();   
+        rbGun = GetComponent<Rigidbody>();
 
         recoilLimitTimer = fireRate / 5f;
 
@@ -74,59 +74,15 @@ public class Weapon : Interactable
     #region Functions
     public override void Interact()
     {
-        /*
-        if (!blockInteract)
-        {
-            // On sélectionne le slot d'arme actuellement en main
-            if (player.weaponInHand.transform.childCount == 0)
-            {
-                GunBlockPos();
 
-                // On modifie le parent de mon arme
-                transform.SetParent(player.weaponInHand.transform, true);
-
-                GunChangePos();
-            }
-            else
-            {
-                for (hand = 0; hand < player.inventory.Length; hand++)
-                {
-                    if (player.inventory[hand].transform.childCount == 0)
-                    {
-                        GunBlockPos();
-
-                        // On modifie le parent de mon arme
-                        transform.SetParent(player.inventory[hand].transform, true);
-
-                        GunChangePos();
-
-                        return;
-                    }
-                }
-
-                // On prend alors l'arme en main que l'on retire et on la remplace par celle ci
-                if (hand == player.inventory.Length)
-                {
-                    // On retire l'autre arme de son parent
-                    player.weaponInHand.GetComponentInChildren<Weapon>().rbGun.isKinematic = false;
-                    player.weaponInHand.GetComponentInChildren<Weapon>().transform.SetParent(player.weaponInHand.transform, false);
-
-                    GunBlockPos();
-
-                    // On modifie le parent de mon arme
-                    transform.SetParent(player.weaponInHand.transform, true);
-
-                    GunChangePos();
-                }
-            }
-        }*/
     }
 
+    /*
     private void GunBlockPos()
     {
         blockInteract = false;
 
-        rbGun.isKinematic = true;
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     private void GunChangePos()
@@ -138,6 +94,7 @@ public class Weapon : Interactable
         // On récupère le playerInput
         playerInput = player.GetComponentInParent<PlayerInput>();
     }
+    */
 
     private void Shoot()
     {

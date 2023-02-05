@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
     #region Variables
     [Header("Player Parameters")]
     public int playerLife = 100;
+    [Tooltip("Nombre de temps avant le respawn du joueur")]
+    [SerializeField] private float timeBeforeSpawn;
+    private float timerRespawn;
 
     [Header("Player Inventory")]
     private Vector3 mouseWheelInput;
@@ -21,8 +24,8 @@ public class Player : MonoBehaviour
     public Animator playerAnimator;
     private Weapon weapon;
     private PlayerInput playerInput;
+    private PlayerMovement playerMovement;
     #endregion
-
 
 
     #region Built In Methods
@@ -30,6 +33,8 @@ public class Player : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
+        playerMovement = GetComponent<PlayerMovement>();
+        timerRespawn = 0f;
 
         InventoryChecker();
     }
@@ -41,11 +46,38 @@ public class Player : MonoBehaviour
         ShootStatut();
 
         Inventory();
+
+        Respawn();
     }
     #endregion
 
 
     #region Functions
+    private void Respawn()
+    {
+        if (playerLife <= 0)
+        {
+            // On immobilise le joueur
+            playerMovement.dead = true;
+
+            // Anim joueur meurt
+            playerAnimator.SetBool("Dead", true);
+
+            timeBeforeSpawn -= Time.deltaTime;
+
+            if (timeBeforeSpawn < timerRespawn)
+            {
+                // On débloque le joueur
+                playerMovement.dead = false;
+
+                // Anim retour en idle
+                playerAnimator.SetBool("Dead", false);
+
+                timeBeforeSpawn = 0;
+            }
+        }
+    }
+
     /// <summary>
     /// Permet de véirifier si le joueur possède une arme au start
     /// </summary>
@@ -53,8 +85,6 @@ public class Player : MonoBehaviour
     {
         for (int i = 0; i < inventory.Length; i++)
         {
-            //weapon = inventory[i].GetComponentInChildren<Weapon>();
-
             inventory[i].gameObject.SetActive(false);
         }
 
@@ -62,7 +92,6 @@ public class Player : MonoBehaviour
         weaponInHand.SetActive(true);
         actualNumber = 0;
     }
-
 
     /// <summary>
     /// Si on a une arme en enfant de la main actuelle

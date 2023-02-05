@@ -327,14 +327,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1335125114589373730, guid: 7ca54cbfc06d4954aa90ee51be75a92c, type: 3}
-      propertyPath: m_Name
-      value: CubeWeapon
-      objectReference: {fileID: 0}
-    - target: {fileID: 1335125114936405054, guid: 7ca54cbfc06d4954aa90ee51be75a92c, type: 3}
-      propertyPath: m_Name
-      value: CylinderWeapon
-      objectReference: {fileID: 0}
     - target: {fileID: 1335125114968839889, guid: 7ca54cbfc06d4954aa90ee51be75a92c, type: 3}
       propertyPath: m_Name
       value: Sam 1
@@ -382,10 +374,6 @@ PrefabInstance:
     - target: {fileID: 1335125115351358011, guid: 7ca54cbfc06d4954aa90ee51be75a92c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1335125115402290092, guid: 7ca54cbfc06d4954aa90ee51be75a92c, type: 3}
-      propertyPath: m_Name
-      value: SphereWeapon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ca54cbfc06d4954aa90ee51be75a92c, type: 3}

@@ -24,7 +24,7 @@ public class EnnemyMoveTowardsTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(destination != default(Vector3)) return;
+        if(destination != default(Vector3)) return; //si on a déjà une destination
 
         if(player.playerLife <= 0) {
             Debug.Log("Trying to move towards the tree");

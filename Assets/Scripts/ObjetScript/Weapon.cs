@@ -131,7 +131,7 @@ public class Weapon : MonoBehaviour
 
     private void WeaponRecoil()
     {
-        transform.localRotation = Quaternion.Euler(Random.Range(2f, 15f), 0f, 0f);
+        transform.localRotation = Quaternion.Euler(-Random.Range(2f, 15f), 0f, 0f);
 
         recoilWeapon = true;
     }

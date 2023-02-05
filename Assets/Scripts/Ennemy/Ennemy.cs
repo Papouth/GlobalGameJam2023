@@ -12,7 +12,7 @@ public class Ennemy : MonoBehaviour
 
     public bool isAttackingTree = false;
 
-    public InteractWall lastAttackedWall = null;
+    public InteractWall lastAttackedWall = null; //sert à savoir si on a besoin de se déplacer
 
     private void Start() {
         agent = GetComponent<NavMeshAgent>();

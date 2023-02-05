@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnnemyAttack : MonoBehaviour
 {
@@ -51,14 +50,5 @@ public class EnnemyAttack : MonoBehaviour
                 attackTime = 0;
             }
         }
-    }
-
-    private Vector3 getClosestPosition(Vector3 destination) {
-        NavMeshHit myNavHit;
-        if(NavMesh.SamplePosition(destination, out myNavHit, 100, -1)) {
-            return myNavHit.position;
-        }
-
-        return destination;
     }
 }

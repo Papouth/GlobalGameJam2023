@@ -53,9 +53,12 @@ public class Player : MonoBehaviour
     {
         for (int i = 0; i < inventory.Length; i++)
         {
-            weapon = inventory[i].GetComponentInChildren<Weapon>();
+            if (inventory[i].transform.childCount != 0) 
+            {
+                weapon = inventory[i].GetComponentInChildren<Weapon>();
 
-            inventory[i].gameObject.SetActive(false);
+                inventory[i].gameObject.SetActive(false);
+            }
         }
 
         weaponInHand = inventory[0];
@@ -63,10 +66,19 @@ public class Player : MonoBehaviour
         actualNumber = 0;
     }
 
+
+    /// <summary>
+    /// Si on a une arme en enfant de la main actuelle
+    /// </summary>
     private void WeaponCheckStatut()
     {
-        if (weapon.gameObject.activeSelf) playerAnimator.SetBool("BigWeapon", true);
-        else if (!weapon.gameObject.activeSelf) playerAnimator.SetBool("BigWeapon", false);
+        if (weaponInHand.transform.childCount != 0) 
+        {
+            weapon = weaponInHand.GetComponentInChildren<Weapon>();
+
+            if (weapon.gameObject.activeSelf) playerAnimator.SetBool("BigWeapon", true);
+            else if (!weapon.gameObject.activeSelf) playerAnimator.SetBool("BigWeapon", false);
+        }
     }
 
     private void ShootStatut()

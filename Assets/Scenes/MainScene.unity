@@ -501,6 +501,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 2869027301422240902, guid: d95a4d20eac909f43a8cdfea14da1e32, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.419607
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869027301515891654, guid: d95a4d20eac909f43a8cdfea14da1e32, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.419607
+      objectReference: {fileID: 0}
     - target: {fileID: 2869027301515891655, guid: d95a4d20eac909f43a8cdfea14da1e32, type: 3}
       propertyPath: m_Follow
       value: 

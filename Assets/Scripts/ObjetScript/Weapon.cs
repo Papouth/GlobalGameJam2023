@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Weapon : Interactable
 {
@@ -31,9 +32,7 @@ public class Weapon : Interactable
     private float reloadTime = 3.2f;
     private float timerToReload = 0f;
 
-    [SerializeField] private AudioSource shotSound;
-    [SerializeField] private GameObject bulletCasing;
-    [SerializeField] private Transform bulletCasingPos;
+    [SerializeField] private AudioClip shotSound;
     public int hand;
     public bool blockInteract;
 
@@ -44,6 +43,7 @@ public class Weapon : Interactable
     private Animator animPlayer;
     private Player player;
     public Rigidbody rbGun;
+    private AudioSource audioSource;
     #endregion
 
 
@@ -54,6 +54,7 @@ public class Weapon : Interactable
         player = FindObjectOfType<Player>();
         colWeapon = GetComponent<Collider>();
         rbGun = GetComponent<Rigidbody>();
+        audioSource= GetComponent<AudioSource>();   
 
         recoilLimitTimer = fireRate / 5f;
 
@@ -77,25 +78,6 @@ public class Weapon : Interactable
 
     }
 
-    /*
-    private void GunBlockPos()
-    {
-        blockInteract = false;
-
-        gameObject.GetComponent<Rigidbody>().isKinematic = true;
-    }
-
-    private void GunChangePos()
-    {
-        // On modifie sa position et sa rotation
-        transform.localPosition = Vector3.forward;
-        transform.localRotation = Quaternion.identity;
-
-        // On récupère le playerInput
-        playerInput = player.GetComponentInParent<PlayerInput>();
-    }
-    */
-
     private void Shoot()
     {
         if (playerInput != null)
@@ -108,6 +90,9 @@ public class Weapon : Interactable
 
                     WeaponRecoil();
                     PlayerRecoil();
+
+                    // Son
+                    audioSource.PlayOneShot(shotSound);
 
                     ammoCount--;
 
@@ -122,6 +107,9 @@ public class Weapon : Interactable
 
                     WeaponRecoil();
                     PlayerRecoil();
+
+                    // Son
+                    audioSource.PlayOneShot(shotSound);
 
                     ammoCount--;
 

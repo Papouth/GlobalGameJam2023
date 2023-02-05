@@ -18,16 +18,17 @@ public class NPCWeapon :MonoBehaviour {
     #endregion
 
     #region Start
-    void Start() {
+    void Awake() {
         if(rangeCollider == null) rangeCollider = GetComponent<SphereCollider>();
         npc = GetComponentInParent<NPC>();
-
-        if(npc == null) Debug.Log("NPC not found !");
+        
     }
     #endregion
 
     #region Actions
     void Shoot(Vector3 where) { //Shoot/aim
+        npc.animator.SetTrigger("TriggerTurret");
+        
         transform.LookAt(where);
 
         Instantiate(bulletPrefab, bulletSpawn.position, transform.rotation);

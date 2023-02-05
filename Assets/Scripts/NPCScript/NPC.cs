@@ -9,6 +9,10 @@ public class NPC : Interactable {
 
     public float teleportDistance = 1.5f;
 
+    public NPCWeapon weapon;
+
+    public Animator animator;
+
     public InteractTurret turret;
     public bool isMoving;
     #endregion
@@ -18,6 +22,11 @@ public class NPC : Interactable {
     {
         agent = GetComponent<NavMeshAgent>();
         assigner = FindObjectOfType<NPCAssigner>();
+        weapon = GetComponentInChildren<NPCWeapon>();
+
+        animator = GetComponent<Animator>();   
+
+        weapon.gameObject.SetActive(false);
     }
 
     void Update() {
@@ -28,20 +37,11 @@ public class NPC : Interactable {
         } else {
             moveCheck();
         }
-
-        /*
-        if(!isMoving && turret != null) {
-            TurretAI();
-        }
-        */
     }
     #endregion
 
 
     #region Checks AI
-    private void TurretAI() {
-        
-    }
 
     private void moveCheck() {
         if(assigner.grabbedNPC == null || turret != null) return;
@@ -53,6 +53,9 @@ public class NPC : Interactable {
             agent.destination = getClosestPosition(assigner.turret.teleportPoint.position);
 
             isMoving = true;
+
+            animator.SetFloat("NPCMove", 0.3f);
+            
             assigner.turret.busy = true;
         }
     }
@@ -71,6 +74,11 @@ public class NPC : Interactable {
 
             turret = assigner.turret;
             agent.enabled = false;
+
+            weapon.gameObject.SetActive(true);
+
+            animator.SetFloat("NPCMove", 0.0f);
+            animator.SetTrigger("TriggerTurret");
 
             assigner.turret.npcDedans = this;
             assigner.grabbedNPC = null;

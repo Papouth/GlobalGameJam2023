@@ -1111,6 +1111,7 @@ GameObject:
   - component: {fileID: 1335125115351357958}
   - component: {fileID: 1335125115351358009}
   - component: {fileID: 1335125115351358008}
+  - component: {fileID: 7113793576057859717}
   m_Layer: 0
   m_Name: Sam 1
   m_TagString: Player
@@ -1286,6 +1287,22 @@ MonoBehaviour:
   haveWeapon: 0
   vignes: 10
   playerAnimator: {fileID: 0}
+--- !u!208 &7113793576057859717
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335125114968839889}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.955, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.97, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1335125115001626738
 GameObject:
   m_ObjectHideFlags: 0

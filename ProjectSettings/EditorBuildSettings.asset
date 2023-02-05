@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Brukas.unity
     guid: 58b50f09de3965a4fac906b02109d88a
+  - enabled: 1
+    path: Assets/Scenes/Xblaze.unity
+    guid: 2f2ca4b5d3d2e3a4fb8c54b94b40733f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 34622bfccfc17f44593c9894333ae17d, type: 2}

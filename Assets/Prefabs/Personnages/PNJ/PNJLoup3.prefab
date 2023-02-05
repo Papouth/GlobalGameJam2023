@@ -969,6 +969,7 @@ GameObject:
   - component: {fileID: 309312800082765644}
   - component: {fileID: 309312800082765646}
   - component: {fileID: 309312800082765647}
+  - component: {fileID: 7744051297562106559}
   m_Layer: 0
   m_Name: LoupTete
   m_TagString: Untagged
@@ -1042,6 +1043,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7744051297562106559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309312800082765645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18a303c7e2b20443ac00b4888286225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  F1: {fileID: 2800000, guid: 85d27184528f3a6409385e5f810019c1, type: 3}
+  F2: {fileID: 2800000, guid: d6b2134b73e6a514aae3a64fc036bdcb, type: 3}
+  F3: {fileID: 2800000, guid: d6b2134b73e6a514aae3a64fc036bdcb, type: 3}
+  F4: {fileID: 2800000, guid: d6b2134b73e6a514aae3a64fc036bdcb, type: 3}
+  F5: {fileID: 2800000, guid: d6b2134b73e6a514aae3a64fc036bdcb, type: 3}
+  F6: {fileID: 2800000, guid: d6b2134b73e6a514aae3a64fc036bdcb, type: 3}
+  TimeWithoutBlinkCooldown: 4
+  blink: 0
 --- !u!1 &309312800132049140
 GameObject:
   m_ObjectHideFlags: 0

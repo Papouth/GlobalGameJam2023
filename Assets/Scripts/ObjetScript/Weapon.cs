@@ -52,7 +52,7 @@ public class Weapon : Interactable
     {
         cc = FindObjectOfType<CharacterController>();
         player = FindObjectOfType<Player>();
-        colWeapon = GetComponent<Collider>(); 
+        colWeapon = GetComponent<Collider>();
         rbGun = GetComponent<Rigidbody>();   
 
         recoilLimitTimer = fireRate / 5f;
@@ -74,8 +74,7 @@ public class Weapon : Interactable
     #region Functions
     public override void Interact()
     {
-        // On met l'objet dans la main du joueur et ON DISABLE LE COLLIDER DE L ARME
-
+        /*
         if (!blockInteract)
         {
             // On sélectionne le slot d'arme actuellement en main
@@ -120,7 +119,7 @@ public class Weapon : Interactable
                     GunChangePos();
                 }
             }
-        }
+        }*/
     }
 
     private void GunBlockPos()

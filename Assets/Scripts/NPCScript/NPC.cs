@@ -13,6 +13,8 @@ public class NPC : Interactable {
 
     public Animator animator;
 
+    private GameObject balais;
+
     public InteractTurret turret;
     public bool isMoving;
     #endregion
@@ -24,9 +26,11 @@ public class NPC : Interactable {
         assigner = FindObjectOfType<NPCAssigner>();
         weapon = GetComponentInChildren<NPCWeapon>();
 
-        animator = GetComponent<Animator>();   
+        animator = GetComponent<Animator>();
 
         weapon.gameObject.SetActive(false);
+
+        balais = GetComponentInChildren<NPCBalais>().gameObject;
     }
 
     void Update() {
@@ -65,7 +69,7 @@ public class NPC : Interactable {
         Vector3 npcPosition = transform.position;
         Vector3 destination = assigner.turret.teleportPoint.position;
 
-        if(Vector3.Distance(npcPosition, destination) < teleportDistance) {
+        if(Vector3.Distance(npcPosition, destination) < teleportDistance) { //teleportation
             
             transform.position = assigner.turret.turretPoint.position;
             //transform.LookAt(assigner.turret.LookPoint);
@@ -76,6 +80,8 @@ public class NPC : Interactable {
             agent.enabled = false;
 
             weapon.gameObject.SetActive(true);
+
+            if(balais != null) balais.SetActive(false);
 
             animator.SetFloat("NPCMove", 0.0f);
             animator.SetTrigger("TriggerTurret");

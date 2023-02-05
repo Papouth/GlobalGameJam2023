@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc96d8a8d9c4e1a43a638912bce13ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.8
+  fireRate: 1.33
   bulletPrefab: {fileID: 6206150154581530509, guid: 52f7973fb6fc04d4da3462686c355858, type: 3}
   bulletSpawn: {fileID: 6516806737402310938}
   rangeCollider: {fileID: 5907475487253511276}

@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
 
 public class Weapon : Interactable
 {
     #region Variables
     [Header("Munitions")]
-    public int ammoCount;
-    public int ammoInMag;
+    [SerializeField] private int ammoCount;
+    [SerializeField] private int ammoInMag;
     public int magazineCount;
     [HideInInspector] public int magazineCountBase;
     [SerializeField] private GameObject bulletPrefab;

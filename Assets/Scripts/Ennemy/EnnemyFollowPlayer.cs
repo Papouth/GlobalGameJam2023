@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -26,7 +24,8 @@ public class EnnemyFollowPlayer : MonoBehaviour {
 
     void Update() 
     {
-        if(player.GetComponent<Player>().playerLife <= 0) return;
+        if(player.GetComponent<Player>().playerLife <= 0 || ennemy.lastAttackedWall != null) return;
+        if(ennemy.lastAttackedWall != null) return;
 
         if(Vector3.Distance(transform.position, lastPosition) < procheDuJoueur) {
             agent.SetDestination(player.transform.position);

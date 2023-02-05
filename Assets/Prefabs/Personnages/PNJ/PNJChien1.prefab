@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 307644738597022313}
   - component: {fileID: 7914116419830858475}
   - component: {fileID: 4270665686939804894}
-  - component: {fileID: 326390067141416242}
   m_Layer: 0
   m_Name: ChienTete
   m_TagString: Untagged
@@ -85,26 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &326390067141416242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3215259379722652296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18a303c7e2b20443ac00b4888286225, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  F1: {fileID: 2800000, guid: 797da5b8cdf9dbf4b9179c74cf2f748d, type: 3}
-  F2: {fileID: 2800000, guid: c7e9f7118260df5428231842db0bcf38, type: 3}
-  F3: {fileID: 2800000, guid: c7e9f7118260df5428231842db0bcf38, type: 3}
-  F4: {fileID: 2800000, guid: c7e9f7118260df5428231842db0bcf38, type: 3}
-  F5: {fileID: 2800000, guid: c7e9f7118260df5428231842db0bcf38, type: 3}
-  F6: {fileID: 2800000, guid: c7e9f7118260df5428231842db0bcf38, type: 3}
-  TimeWithoutBlinkCooldown: 4
-  blink: 0
 --- !u!1 &4884239605061078533
 GameObject:
   m_ObjectHideFlags: 0

@@ -67,8 +67,6 @@ public class Player : MonoBehaviour
 
             if (timeBeforeSpawn < timerRespawn)
             {
-                playerLife = 100;
-
                 // On débloque le joueur
                 playerMovement.dead = false;
 
